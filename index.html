@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0a14">
+  <meta name="description" content="Cinco sábados de octubre, cinco noches de misterio.">
+  <!-- Seguridad y privacidad -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <title>Noches de octubre</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/portada.css">
+
+  <script src="js/proteccion.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  
+  <div class="fondo-video" aria-hidden="true">
+    <video id="melodia" src="index%20video.mp4" data-fin="30" loop playsinline></video>
+  </div>
+
+  <canvas id="brasas" aria-hidden="true"></canvas>
+  <button class="musica" id="musica" type="button" aria-pressed="true" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="nota-icono" d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <path class="tachado" d="M3 3l18 18" />
+    </svg>
+  </button>
+
+  <main>
+    <header>
+      <p class="antetitulo">Cartelera misteriosa</p>
+      <h1>Noches de octubre</h1>
+      <p class="intro">Cinco noches, cada una con su propio misterio. Elige la noche que te toca.</p>
+      <div class="regla" role="presentation"></div>
+    </header>
+
+    <nav class="noches" aria-label="Noches de octubre">
+      <a class="noche" href="3-de-octubre.html">
+        <span class="noche__numero">I</span>
+        <span class="noche__fecha">3 de octubre</span>
+        <span class="noche__estado">Tres puertas, tres mundos</span>
+      </a>
+
+      <a class="noche noche--cerrada" aria-disabled="true">
+        <span class="noche__numero">II</span>
+        <span class="noche__fecha">10 de octubre</span>
+        <span class="noche__estado">Próximamente…</span>
+      </a>
+
+      <a class="noche noche--cerrada" aria-disabled="true">
+        <span class="noche__numero">III</span>
+        <span class="noche__fecha">17 de octubre</span>
+        <span class="noche__estado">Próximamente…</span>
+      </a>
+
+      <a class="noche noche--cerrada noche--final" aria-disabled="true">
+        <span class="noche__numero">IV</span>
+        <span class="noche__fecha">31 de octubre</span>
+        <span class="noche__estado">Próximamente…</span>
+      </a>
+
+      <a class="noche" href="1-de-noviembre.html">
+        <span class="noche__numero">V</span>
+        <span class="noche__fecha">1 de noviembre</span>
+        <span class="noche__estado">Día de Muertos</span>
+      </a>
+    </nav>
+
+    <footer>
+      <p class="cierre">Cada semana se abre una nueva noche.</p>
+      <p class="nota">Vuelve cuando caiga el sol.</p>
+    </footer>
+  </main>
+</body>
+</html>

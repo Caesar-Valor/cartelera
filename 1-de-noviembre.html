@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2a1238">
+  <meta name="description" content="1 de noviembre: un amanecer de Día de Muertos.">
+  <!-- Seguridad y privacidad -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <title>Día de Muertos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/noviembre.css">
+
+  <script src="js/proteccion.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body class="amanecer">
+  <!-- Figuras reutilizables: papel picado, cempasúchil -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="papel" viewBox="0 0 100 112">
+        <path fill="currentColor" fill-rule="evenodd" d="
+          M0 0 H100 V100 L90 112 L80 100 L70 112 L60 100 L50 112 L40 100 L30 112 L20 100 L10 112 L0 100 Z
+          M36 50 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 Z
+          M45 50 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 Z
+          M47 28 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z
+          M47 72 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z
+          M25 50 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z
+          M69 50 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z
+          M20 18 L26 27 L20 36 L14 27 Z
+          M80 18 L86 27 L80 36 L74 27 Z
+          M20 64 L26 73 L20 82 L14 73 Z
+          M80 64 L86 73 L80 82 L74 73 Z
+          M32 8 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z
+          M62 8 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z" />
+      </symbol>
+
+      <symbol id="flor" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="15" fill="#ee8a1b" stroke="#f7a934" stroke-width="7" stroke-dasharray="3 2.2" />
+        <circle cx="20" cy="20" r="10" fill="#f7a934" stroke="#e3711d" stroke-width="5" stroke-dasharray="2.4 1.8" />
+        <circle cx="20" cy="20" r="4.5" fill="#b84a16" />
+      </symbol>
+
+      <!-- Cráneo decorado con corona de cempasúchil -->
+      <symbol id="craneo" viewBox="0 0 120 130">
+        <!-- Cabeza y mandíbula -->
+        <path d="M60 22 C31 22 16 42 16 64 C16 80 25 90 33 93 L33 108 C33 113 38 116 43 116 L77 116 C82 116 87 113 87 108 L87 93 C95 90 104 80 104 64 C104 42 89 22 60 22 Z" fill="#f4ead2" stroke="#d9c9a3" stroke-width="1.5" />
+        <!-- Ojos con pétalos -->
+        <g fill="none" stroke-width="3.5" stroke-dasharray="5 3.5" stroke-linecap="round">
+          <circle cx="41" cy="66" r="15" stroke="#e8457f" />
+          <circle cx="79" cy="66" r="15" stroke="#2b8fd6" />
+        </g>
+        <circle cx="41" cy="66" r="10" fill="#2a1238" />
+        <circle cx="79" cy="66" r="10" fill="#2a1238" />
+        <circle cx="44" cy="63" r="2.6" fill="#fff6d0" />
+        <circle cx="82" cy="63" r="2.6" fill="#fff6d0" />
+        <!-- Nariz de corazón -->
+        <path d="M60 88 C56 83 52 80 55 77 C57 75 59 76 60 78 C61 76 63 75 65 77 C68 80 64 83 60 88 Z" fill="#2a1238" />
+        <!-- Boca cosida -->
+        <path d="M40 101 Q60 108 80 101" fill="none" stroke="#2a1238" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M45 97 V106 M52 99 V108 M60 100 V109 M68 99 V108 M75 97 V106" stroke="#2a1238" stroke-width="2" stroke-linecap="round" />
+        <!-- Mejillas: espirales y puntos -->
+        <g fill="none" stroke="#8e44c9" stroke-width="2" stroke-linecap="round">
+          <path d="M25 84 C21 80 24 75 28 77 C31 79 29 83 26 82" />
+          <path d="M95 84 C99 80 96 75 92 77 C89 79 91 83 94 82" />
+        </g>
+        <g fill="#2fb36b">
+          <circle cx="30" cy="90" r="1.8" /><circle cx="35" cy="86" r="1.6" />
+          <circle cx="90" cy="90" r="1.8" /><circle cx="85" cy="86" r="1.6" />
+        </g>
+        <!-- Frente: flor y gotas -->
+        <g fill="#e8457f">
+          <circle cx="60" cy="38" r="4" /><circle cx="60" cy="52" r="4" />
+          <circle cx="53" cy="45" r="4" /><circle cx="67" cy="45" r="4" />
+        </g>
+        <circle cx="60" cy="45" r="4.2" fill="#f5c518" />
+        <g fill="#2b8fd6">
+          <path d="M44 42 C42 46 44 48 46 47 C47 45 46 44 44 42 Z" />
+          <path d="M76 42 C78 46 76 48 74 47 C73 45 74 44 76 42 Z" />
+        </g>
+        <!-- Corona de cempasúchil -->
+        <use href="#flor" x="14" y="12" width="22" height="22" />
+        <use href="#flor" x="31" y="2" width="24" height="24" />
+        <use href="#flor" x="48" y="-3" width="24" height="24" />
+        <use href="#flor" x="65" y="2" width="24" height="24" />
+        <use href="#flor" x="84" y="12" width="22" height="22" />
+        <g fill="#2fb36b">
+          <path d="M28 30 C22 30 18 34 18 38 C24 38 28 35 28 30 Z" />
+          <path d="M92 30 C98 30 102 34 102 38 C96 38 92 35 92 30 Z" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Escenario del amanecer -->
+  <div class="cielo" aria-hidden="true">
+    <div class="sol"></div>
+    <svg class="colinas" viewBox="0 0 1440 260" preserveAspectRatio="none">
+      <path class="colina-lejana" d="M0 150 C180 90 320 120 480 100 C660 78 780 140 960 110 C1130 82 1280 120 1440 95 V260 H0 Z" />
+      <path class="colina-cercana" d="M0 200 C200 160 360 190 560 170 C760 150 900 200 1100 180 C1250 165 1350 185 1440 175 V260 H0 Z" />
+    </svg>
+  </div>
+
+  <canvas id="brasas" data-modo="petalos" aria-hidden="true"></canvas>
+
+  <audio id="melodia" src="1denoviembre.mp3" loop autoplay preload="auto"></audio>
+  <button class="musica" id="musica" type="button" aria-pressed="false" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="nota-icono" d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <path class="tachado" d="M3 3l18 18" />
+    </svg>
+  </button>
+
+  <!-- Guirnalda de papel picado -->
+  <ul class="guirnalda" aria-hidden="true">
+    <li style="--p: #e8457f"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #f28c1b"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #8e44c9"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #2fb36b"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #f5c518"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #2b8fd6"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #e8457f"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #f28c1b"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #8e44c9"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #2fb36b"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #f5c518"><svg><use href="#papel" /></svg></li>
+    <li style="--p: #2b8fd6"><svg><use href="#papel" /></svg></li>
+  </ul>
+
+  <a class="volver" href="index.html" aria-label="Volver a las noches de octubre">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+    <span>Noches de octubre</span>
+  </a>
+
+  <main>
+    <header>
+      <p class="antetitulo">1 de noviembre</p>
+      <h1>Cuando vuelven los que amamos</h1>
+      <p class="intro">La noche terminó y el sol sale entre flores de cempasúchil. Hoy el camino está abierto para quienes regresan. Toca la puerta para asomarte.</p>
+      <div class="regla" role="presentation"></div>
+    </header>
+
+    <div class="escenario">
+      <div class="ofrenda ofrenda--izq" aria-hidden="true">
+        <span class="vela vela--alta"></span>
+        <svg class="flor"><use href="#flor" /></svg>
+        <span class="vela"></span>
+        <svg class="flor flor--chica"><use href="#flor" /></svg>
+      </div>
+
+      <ul class="puertas puertas--una">
+        <li class="marco marco--muertos" data-efecto="cempasuchil">
+          <div class="umbral" id="u1" aria-hidden="true">
+            <h2>¿Recordarás a quienes nunca se van?</h2>
+            <p>Un camino de pétalos naranjas, una guitarra blanca y una familia que prohibió la música.</p>
+            <p class="pista">Pista: mientras alguien te recuerde, sigues del otro lado del puente.</p>
+            <p class="vibra">Vibra: color, música y memoria</p>
+          </div>
+          <button class="hoja" type="button" aria-expanded="false" aria-controls="u1">
+            <span class="numero">V</span>
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <!-- Calaverita -->
+              <path d="M50 12 C27 12 16 28 16 46 C16 60 24 68 30 70 L30 82 C30 86 34 88 38 88 L62 88 C66 88 70 86 70 82 L70 70 C76 68 84 60 84 46 C84 28 73 12 50 12 Z" fill="#eadfc6" />
+              <circle cx="36" cy="47" r="13" fill="none" stroke="#e8457f" stroke-width="3" stroke-dasharray="4 3" />
+              <circle cx="64" cy="47" r="13" fill="none" stroke="#2b8fd6" stroke-width="3" stroke-dasharray="4 3" />
+              <circle cx="36" cy="47" r="9" fill="#1a0f24" />
+              <circle cx="64" cy="47" r="9" fill="#1a0f24" />
+              <path d="M50 57 L45 65 L55 65 Z" fill="#1a0f24" />
+              <path d="M36 77 H64 M43 73 V81 M50 73 V81 M57 73 V81" stroke="#1a0f24" stroke-width="2" stroke-linecap="round" />
+              <circle cx="50" cy="21" r="3.2" fill="#e8457f" />
+              <circle cx="50" cy="33" r="3.2" fill="#e8457f" />
+              <circle cx="44" cy="27" r="3.2" fill="#e8457f" />
+              <circle cx="56" cy="27" r="3.2" fill="#e8457f" />
+              <circle cx="50" cy="27" r="3.4" fill="#f28c1b" />
+            </svg>
+            <span class="llamar" data-abrir="Abrir la puerta del amanecer" data-cerrar="Cerrar la puerta del amanecer">Abrir la puerta del amanecer</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="ofrenda ofrenda--der" aria-hidden="true">
+        <svg class="flor flor--chica"><use href="#flor" /></svg>
+        <span class="vela"></span>
+        <svg class="flor"><use href="#flor" /></svg>
+        <span class="vela vela--alta"></span>
+      </div>
+    </div>
+
+    <section class="banquete banquete--muertos" aria-labelledby="titulo-banquete">
+      <svg class="craneo" viewBox="0 0 120 130" aria-hidden="true"><use href="#craneo" /></svg>
+      <h2 id="titulo-banquete">El banquete de los que regresan</h2>
+      <p>Dos ofrendas para una noche en que los recuerdos cruzan el puente.</p>
+      <dl>
+        <dt>Para poner en el altar</dt>
+        <dd>Triángulos dorados como pétalos de cempasúchil, bajo un manto tibio que se estira de mano en mano.</dd>
+        <dt>El plato de la familia</dt>
+        <dd>Pequeñas lunas de maíz dobladas sobre un secreto, como las que se preparan para quienes vuelven a casa una noche al año.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p class="cierre">Ninguna noche termina del todo.</p>
+      <p class="nota">Mientras alguien te recuerde, la puerta seguirá abierta.</p>
+    </footer>
+  </main>
+</body>
+</html>

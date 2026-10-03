@@ -1,0 +1,273 @@
+/* ==========================================================
+   Cartelera misteriosa — 1 de noviembre (Día de Muertos)
+   Usa las variables definidas en estilos.css
+   ========================================================== */
+
+:root {
+  --rosa: #e8457f;
+  --cempasuchil: #f28c1b;
+  --morado: #8e44c9;
+  --muertos: #7a2357;
+}
+
+/* ---------- Cielo del amanecer ---------- */
+body.amanecer {
+  background: #1d1240;
+}
+
+.cielo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+    #1d1240 0%,
+    #3e1d5c 22%,
+    #8a2f63 45%,
+    #d9564a 64%,
+    #f39a4c 80%,
+    #fcd27f 100%);
+}
+
+/* Araguaney, árbol nacional de Venezuela, muy difuminado sobre el cielo */
+.cielo::before {
+  content: "";
+  position: absolute;
+  inset: -6rem; /* margen extra para que el desenfoque no deje bordes */
+  background: url("../img/araguaney.jpg") center / cover no-repeat;
+  filter: blur(30px) saturate(1.25);
+  opacity: .6;
+  mix-blend-mode: screen;
+  /* Arriba sigue siendo noche; el dorado del araguaney aparece hacia el amanecer */
+  -webkit-mask-image: linear-gradient(180deg, transparent 15%, #000 60%);
+  mask-image: linear-gradient(180deg, transparent 15%, #000 60%);
+}
+
+/* Sol que asoma detrás de las colinas */
+.sol {
+  position: absolute;
+  left: 50%;
+  bottom: 16vh;
+  width: min(34rem, 80vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  translate: -50% 50%;
+  background: radial-gradient(circle, #fff3c4 0%, #ffd27a 38%, #f7a24a 55%, rgba(247, 162, 74, 0) 72%);
+  animation: salir 7s cubic-bezier(.2, .7, .3, 1) both;
+}
+@keyframes salir {
+  from { translate: -50% 95%; opacity: .4; }
+}
+
+.colinas {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 26vh;
+}
+.colina-lejana  { fill: #5a2350; }
+.colina-cercana { fill: #2a1238; }
+
+/* Textos legibles sobre el cielo claro */
+.amanecer main { text-shadow: 0 2px 10px rgba(29, 18, 64, .75); }
+.amanecer header p,
+.amanecer footer .nota { color: #ffd9a0; }
+.amanecer .regla { background: linear-gradient(90deg, transparent, var(--cempasuchil), transparent); }
+
+/* ---------- Papel picado ---------- */
+.guirnalda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 .5rem;
+  list-style: none;
+  pointer-events: none;
+}
+/* Cordel */
+.guirnalda::before {
+  content: "";
+  position: absolute;
+  top: .35rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(234, 223, 198, .7);
+}
+.guirnalda li {
+  flex: 1 1 0;
+  max-width: 5.5rem;
+  margin: .35rem .15rem 0;
+  transform-origin: top center;
+  animation: mecer 4s ease-in-out infinite alternate;
+}
+.guirnalda li:nth-child(even) { animation-delay: -2s; animation-duration: 3.4s; }
+.guirnalda li:nth-child(3n)   { animation-duration: 4.6s; }
+.guirnalda svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 100 / 112;
+  color: var(--p);
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .3));
+}
+@keyframes mecer {
+  from { transform: rotate(-4deg) skewX(-2deg); }
+  to   { transform: rotate(4deg) skewX(2deg); }
+}
+
+.amanecer main { padding-top: 7rem; }
+
+/* El botón de volver baja para no tapar el papel picado */
+.amanecer .volver { top: calc(6.5rem + env(safe-area-inset-top, 0px)); }
+
+/* ---------- Escenario: puerta con ofrendas a los lados ---------- */
+.escenario {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.puertas--una {
+  grid-template-columns: 1fr;
+  width: 21rem;
+  flex: 0 0 auto;
+}
+
+.marco--muertos {
+  --c: var(--muertos);
+  border-color: var(--cempasuchil);
+  box-shadow:
+    0 1.5rem 3rem rgba(29, 18, 64, .6),
+    0 0 4rem -0.5rem rgba(255, 210, 122, .55);
+}
+.marco--muertos .hoja {
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, .2) 0 2px, transparent 2px 3.2rem),
+    linear-gradient(180deg, #b0336e, var(--muertos) 55%, #2a1238 130%);
+}
+.marco--muertos .hoja .llamar { color: #ffd9a0; }
+.marco--muertos .umbral {
+  background: radial-gradient(circle at 50% 30%, #c4553a 0%, #3e1d5c 60%, #1d1240 95%);
+}
+.marco--muertos .umbral .vibra { color: #ffd27a; }
+.marco--muertos .umbral .pista { border-top-color: rgba(242, 140, 27, .6); }
+
+/* Ofrendas: velas y cempasúchil */
+.ofrenda {
+  display: flex;
+  align-items: flex-end;
+  gap: .6rem;
+  padding-bottom: .4rem;
+}
+
+.flor {
+  width: 3.4rem;
+  height: 3.4rem;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, .35));
+  animation: respirar 3.5s ease-in-out infinite alternate;
+}
+.flor--chica { width: 2.5rem; height: 2.5rem; animation-delay: -1.5s; }
+@keyframes respirar {
+  to { transform: scale(1.06) rotate(8deg); }
+}
+
+.vela {
+  position: relative;
+  width: 1.1rem;
+  height: 3.2rem;
+  border-radius: .2rem .2rem .15rem .15rem;
+  background: linear-gradient(90deg, #e9dcc0, #fff8e6 45%, #d8c8a6);
+  box-shadow: 0 0 1.5rem rgba(255, 196, 102, .35);
+}
+.vela--alta { height: 4.6rem; }
+/* Llama */
+.vela::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: .7rem;
+  height: 1.2rem;
+  margin-bottom: .1rem;
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  background: radial-gradient(ellipse at 50% 70%, #fff6d0 0%, #ffcf5a 40%, #f26b1b 80%);
+  box-shadow: 0 0 .8rem #ffb347, 0 0 2rem rgba(255, 160, 60, .6);
+  translate: -50% 0;
+  transform-origin: 50% 100%;
+  animation: titilar 1.2s ease-in-out infinite alternate;
+}
+.vela:nth-child(3)::before { animation-duration: .9s; }
+@keyframes titilar {
+  0%   { transform: scale(1, 1) rotate(-2deg); }
+  50%  { transform: scale(.9, 1.08) rotate(2deg); }
+  100% { transform: scale(1.05, .95) rotate(-1deg); }
+}
+
+/* Pétalos que salen al abrir la puerta (creados desde JS) */
+.petalo {
+  border-radius: 60% 0 60% 0;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, .2);
+}
+
+/* Botón de música en colores de cempasúchil */
+.amanecer .musica { border-color: var(--cempasuchil); color: var(--cempasuchil); }
+.amanecer .musica[aria-pressed="true"] {
+  color: #ffd9a0;
+  box-shadow: 0 .5rem 1.5rem rgba(29, 18, 64, .6), 0 0 1.2rem rgba(242, 140, 27, .6);
+}
+
+/* ---------- Banquete de los que regresan ---------- */
+.banquete--muertos {
+  position: relative;
+  margin-top: 5rem;
+  padding: 4.5rem 1.75rem 2rem;
+  border: 2px solid var(--cempasuchil);
+  border-radius: 1.25rem;
+  background: rgba(29, 18, 64, .72);
+  box-shadow: 0 1.5rem 3rem rgba(29, 18, 64, .5), inset 0 0 2.5rem rgba(232, 69, 127, .15);
+  backdrop-filter: blur(4px);
+}
+.banquete--muertos > p { color: #ffd9a0; }
+.banquete--muertos dt { color: var(--cempasuchil); }
+.banquete--muertos dt::before {
+  content: "✿ ";
+  color: var(--rosa);
+}
+
+/* Cráneo decorado que corona la tarjeta */
+.craneo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 7.5rem;
+  height: 8.1rem;
+  translate: -50% -55%;
+  filter: drop-shadow(0 .5rem 1rem rgba(29, 18, 64, .6));
+  animation: flotar 4s ease-in-out infinite alternate;
+}
+@keyframes flotar {
+  from { transform: rotate(-3deg); }
+  to   { transform: translateY(-.35rem) rotate(3deg); }
+}
+
+.amanecer footer { margin-top: 3rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 52rem) {
+  .escenario { flex-wrap: wrap; }
+  .puertas--una { order: -1; flex-basis: 100%; width: auto; max-width: 21rem; }
+  .ofrenda { padding-top: 1rem; }
+  .amanecer main { padding-top: 5.5rem; }
+  .amanecer .volver { top: calc(5rem + env(safe-area-inset-top, 0px)); }
+  .guirnalda li:nth-child(n + 9) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sol, .guirnalda li, .flor, .vela::before, .craneo { animation: none; }
+}

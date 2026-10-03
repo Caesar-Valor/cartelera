@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0a14">
+  <meta name="description" content="Tres puertas, tres mundos: la cartelera misteriosa de la noche.">
+  <!-- Seguridad y privacidad -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <title>Cartelera misteriosa</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script src="js/proteccion.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <div class="fondo-bosque" aria-hidden="true"></div>
+  <canvas id="brasas" aria-hidden="true"></canvas>
+
+  <audio id="melodia" src="welcome%20to%20hallowen.mp3" loop autoplay preload="auto"></audio>
+  <button class="musica" id="musica" type="button" aria-pressed="true" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="nota-icono" d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <path class="tachado" d="M3 3l18 18" />
+    </svg>
+  </button>
+
+  <a class="volver" href="index.html" aria-label="Volver a las noches de octubre">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+    <span>Noches de octubre</span>
+  </a>
+
+  <main>
+    <header>
+      <p class="antetitulo">Cartelera misteriosa</p>
+      <h1>Tres puertas, tres mundos</h1>
+      <p class="intro">La noche empieza con una canción, se tuerce en un baile y termina con un hechizo. Toca cada puerta para asomarte.</p>
+      <div class="regla" role="presentation"></div>
+    </header>
+
+    <ul class="puertas">
+      <li class="marco marco--luna" data-efecto="murcielagos">
+        <div class="umbral" id="u1" aria-hidden="true">
+          <h2>¿Te atreves a visitar el reino del extraño capricho?</h2>
+          <p>Un pueblo donde las pesadillas cantan y las calabazas nunca se apagan.</p>
+          <p class="pista">Pista: su rey se cansó de asustar y quiere quedarse con una fiesta ajena.</p>
+          <p class="vibra">Vibra: oscuridad y fantasía</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u1">
+          <span class="numero">I</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="34" fill="#eadfc6"/>
+            <circle cx="64" cy="42" r="30" fill="#3b2a63"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la primera puerta" data-cerrar="Cerrar la primera puerta">Abrir la primera puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--carmesi" data-efecto="sangre">
+        <div class="umbral" id="u2" aria-hidden="true">
+          <h2>¿Puedes resistir una fuerza incontrolable bajo presión?</h2>
+          <p>Una noche de baile, una corona y un secreto que nadie debió provocar.</p>
+          <p class="pista">Pista: todos se rieron de ella. Fue la última vez.</p>
+          <p class="vibra">Atmósfera: tensión y fuego</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u2">
+          <span class="numero">II</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M18 40 L32 56 L50 30 L68 56 L82 40 L76 72 L24 72 Z" fill="none" stroke="#eadfc6" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M50 76 C44 86 42 90 50 96 C58 90 56 86 50 76 Z" fill="#eadfc6"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la segunda puerta" data-cerrar="Cerrar la segunda puerta">Abrir la segunda puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--indigo" data-efecto="hechizo">
+        <div class="umbral" id="u3" aria-hidden="true">
+          <h2>¿Descubrirás el secreto de las dos mitades?</h2>
+          <p>Dos reinos y un mismo hechizo partido por el destino.</p>
+          <p class="pista">Pista: cumplen años el mismo día y ninguna lo sabía.</p>
+          <p class="vibra">Vibra: magia y esperanza</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u3">
+          <span class="numero">III</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path id="estrella" d="M30 28 L35 44 L52 44 L38 54 L43 70 L30 60 L17 70 L22 54 L8 44 L25 44 Z" fill="#eadfc6"/>
+            <use href="#estrella" x="40" y="14"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la tercera puerta" data-cerrar="Cerrar la tercera puerta">Abrir la tercera puerta</span>
+        </button>
+      </li>
+    </ul>
+
+    <section class="banquete" aria-labelledby="titulo-banquete">
+      <h2 id="titulo-banquete">El banquete de la noche</h2>
+      <p>Tres ofrendas para quien se quede hasta el final.</p>
+      <dl>
+        <dt>Para las manos nerviosas</dt>
+        <dd>Granos dorados que estallan del susto. Conviene tenerlos cerca cuando se apague la luz.</dd>
+        <dt>El plato fuerte</dt>
+        <dd>Hebras de oro llegadas de Roma, cubiertas por un hechizo de yema que no admite ni una gota de crema.</dd>
+        <dt>El final dulce</dt>
+        <dd>Un pastel que se quemó a propósito: negro por fuera y tierno por dentro, como esta noche.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p class="cierre">¿Estás preparada para abrir el telón?</p>
+      <p class="nota">Esta noche, el destino elegirá. La maratón del misterio espera.</p>
+    </footer>
+  </main>
+</body>
+</html>

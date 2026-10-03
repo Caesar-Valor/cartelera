@@ -1,0 +1,398 @@
+/* ==========================================================
+   Cartelera misteriosa — estilos
+   ========================================================== */
+
+/* ---------- Variables ---------- */
+:root {
+  --tinta: #0d0a14;
+  --hueso: #eadfc6;
+  --oro: #b8935a;
+  --oro-suave: rgba(184, 147, 90, .5);
+  --luna: #3b2a63;
+  --carmesi: #6e1220;
+  --indigo: #1c2a66;
+  --fondo-puerta: #06040a;
+
+  --display: "Cinzel Decorative", "Palatino Linotype", Palatino, Georgia, serif;
+  --texto: "IM Fell English", "Iowan Old Style", Georgia, serif;
+
+  --curva-puerta: cubic-bezier(.6, .05, .25, 1);
+  --duracion-puerta: 1.1s;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  padding:
+    env(safe-area-inset-top, 0px)
+    env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px)
+    env(safe-area-inset-left, 0px);
+  background:
+    radial-gradient(60rem 30rem at 50% -10%, #2a1d3f 0%, transparent 70%),
+    radial-gradient(40rem 24rem at 50% 110%, #2a0d14 0%, transparent 70%),
+    var(--tinta);
+  background-attachment: fixed;
+  color: var(--hueso);
+  font-family: var(--texto);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 3.5rem;
+  text-align: center;
+}
+
+/* ---------- Cabecera ---------- */
+header p { margin: 0; font-style: italic; color: var(--oro); }
+
+header .antetitulo {
+  font-size: .95rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+
+header .intro {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 7vw, 4.25rem);
+  line-height: 1.05;
+  margin: .5rem 0 .75rem;
+  letter-spacing: .02em;
+  text-shadow: 0 0 2.5rem rgba(184, 147, 90, .45);
+}
+
+.regla {
+  width: min(22rem, 70%);
+  height: 1px;
+  margin: 1.5rem auto 2.5rem;
+  background: linear-gradient(90deg, transparent, var(--oro), transparent);
+}
+
+/* ---------- Puertas ---------- */
+.puertas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marco {
+  --c: var(--luna);
+  position: relative;
+  height: 31rem;
+  perspective: 70rem;
+  border: 2px solid var(--oro);
+  border-bottom-width: 6px;
+  border-radius: 50% 50% 0 0 / 9rem 9rem 0 0;
+  background: var(--fondo-puerta);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .6);
+  transition: box-shadow var(--duracion-puerta);
+}
+.marco--luna    { --c: var(--luna); }
+.marco--carmesi { --c: var(--carmesi); }
+.marco--indigo  { --c: var(--indigo); }
+
+.marco.abierta {
+  box-shadow:
+    0 1.5rem 3rem rgba(0, 0, 0, .6),
+    0 0 3rem -0.5rem var(--c);
+}
+
+/* Lo que hay detrás de la puerta */
+.umbral {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .75rem;
+  padding: 5.5rem 1.5rem 1.5rem;
+  border-radius: inherit;
+  overflow: hidden;
+  font-size: 1rem;
+  background: radial-gradient(circle at 50% 30%, var(--c) 0%, var(--fondo-puerta) 85%);
+  opacity: 0;
+  transition: opacity .6s ease .35s;
+}
+.abierta .umbral { opacity: 1; }
+
+.umbral h2 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  line-height: 1.25;
+  margin: 0;
+}
+.umbral p { margin: 0; }
+.umbral .pista { border-top: 1px solid var(--oro-suave); padding-top: .6rem; }
+.umbral .vibra { font-style: italic; color: var(--oro); }
+
+/* La hoja de la puerta */
+.hoja {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  border: 0;
+  border-radius: inherit;
+  padding: 0;
+  cursor: pointer;
+  color: var(--hueso);
+  font-family: var(--display);
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, .22) 0 2px, transparent 2px 3.2rem),
+    linear-gradient(180deg, var(--c), var(--fondo-puerta) 130%);
+  transform-origin: left center;
+  transition:
+    transform var(--duracion-puerta) var(--curva-puerta),
+    box-shadow var(--duracion-puerta),
+    filter .3s;
+  backface-visibility: hidden;
+}
+.hoja:hover { filter: brightness(1.15); }
+.hoja:focus-visible { outline: 3px solid var(--hueso); outline-offset: 4px; }
+
+.hoja .numero { font-size: 2.5rem; letter-spacing: .1em; }
+.hoja svg { width: 5.5rem; height: 5.5rem; }
+.hoja .llamar {
+  font-family: var(--texto);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--oro);
+}
+
+/* Pomo */
+.hoja::after {
+  content: "";
+  position: absolute;
+  right: 1.1rem;
+  top: 58%;
+  width: .9rem;
+  height: .9rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f1d9a6, var(--oro) 55%, #4a3414);
+}
+
+.abierta .hoja {
+  transform: rotateY(-104deg);
+  box-shadow: 1rem 0 2rem rgba(0, 0, 0, .7);
+}
+
+/* ---------- Banquete ---------- */
+.banquete { margin: 3.5rem auto 0; max-width: 40rem; }
+.banquete h2 {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 4vw, 1.9rem);
+  margin: 0 0 .25rem;
+}
+.banquete > p { margin: 0 0 1.5rem; font-style: italic; color: var(--oro); }
+.banquete dl { margin: 0; text-align: left; }
+.banquete dt {
+  font-family: var(--display);
+  font-size: 1rem;
+  color: var(--oro);
+  margin-top: 1.1rem;
+}
+.banquete dd { margin: .15rem 0 0; }
+
+/* ---------- Pie ---------- */
+footer { margin-top: 3rem; }
+footer p { margin: 0; }
+footer .cierre {
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  margin-bottom: .5rem;
+}
+footer .nota { font-style: italic; color: var(--oro); }
+
+/* ---------- Fondo de bosque difuminado (3 de octubre) ---------- */
+.fondo-bosque {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.fondo-bosque::before {
+  content: "";
+  position: absolute;
+  inset: -2rem; /* margen extra para que el desenfoque no deje bordes claros */
+  background: url("../img/bosqueoscuro.jpg") center / cover no-repeat;
+  filter: blur(4px) brightness(1.1) contrast(1.05);
+}
+/* Velo oscuro para que puertas y textos se lean bien */
+.fondo-bosque::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(13, 10, 20, 0) 0%, rgba(13, 10, 20, .55) 85%),
+    linear-gradient(180deg, rgba(59, 42, 99, .35), rgba(13, 10, 20, .1) 45%, rgba(110, 18, 32, .35));
+}
+
+/* ---------- Protección del contenido ---------- */
+/* Sin seleccionar texto ni resaltar al tocar */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+/* Imágenes, vídeo y dibujos: sin arrastrar ni menú de "guardar" en pulsación larga (iOS) */
+img, video, audio, svg, canvas {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+img, video { pointer-events: none; }
+/* Al imprimir no sale nada */
+@media print {
+  body { display: none !important; }
+}
+
+/* ---------- Efectos (creados desde JS) ---------- */
+#brasas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particula {
+  position: fixed;
+  pointer-events: none;
+  z-index: 5;
+  will-change: transform, opacity;
+}
+.particula svg { display: block; width: 100%; height: 100%; }
+
+.murcielago { width: 1.75rem; height: 1.75rem; }
+
+.gota {
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  background: #b3121f;
+  box-shadow: 0 0 8px rgba(179, 18, 31, .8);
+}
+
+.destello { filter: drop-shadow(0 0 6px currentColor); }
+
+.velo {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ---------- Botón de música ---------- */
+.musica {
+  position: fixed;
+  right: calc(1rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 2px solid var(--oro);
+  border-radius: 50%;
+  background: rgba(13, 10, 20, .85);
+  color: var(--oro);
+  cursor: pointer;
+  box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .6);
+  transition: color .3s, box-shadow .3s, transform .2s;
+}
+.musica:hover { transform: scale(1.08); }
+.musica:focus-visible { outline: 3px solid var(--hueso); outline-offset: 3px; }
+.musica svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.musica .tachado { display: inline; }
+.musica[aria-pressed="true"] {
+  color: var(--hueso);
+  box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .6), 0 0 1.2rem rgba(184, 147, 90, .55);
+  animation: latido 1.6s ease-in-out infinite;
+}
+.musica[aria-pressed="true"] .tachado { display: none; }
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+/* ---------- Botón para volver a la portada ---------- */
+.volver {
+  position: fixed;
+  left: calc(1rem + env(safe-area-inset-left, 0px));
+  top: calc(1rem + env(safe-area-inset-top, 0px));
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .45rem 1rem .45rem .6rem;
+  border: 2px solid var(--oro);
+  border-radius: 999px;
+  background: rgba(13, 10, 20, .85);
+  color: var(--oro);
+  font-family: var(--texto);
+  font-style: italic;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .6);
+  transition: color .3s, box-shadow .3s, transform .2s;
+}
+.volver:hover {
+  color: var(--hueso);
+  transform: translateX(-.15rem);
+  box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .6), 0 0 1.2rem rgba(184, 147, 90, .55);
+}
+.volver:focus-visible { outline: 3px solid var(--hueso); outline-offset: 3px; }
+.volver svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 52rem) {
+  .puertas { grid-template-columns: 1fr; max-width: 21rem; margin: 0 auto; }
+  .marco { height: 29rem; }
+  .volver span { display: none; } /* en móvil solo la flecha */
+  .volver { padding: .45rem; }
+}
+
+/* ---------- Accesibilidad: menos movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hoja, .umbral, .marco { transition: none; }
+  .musica[aria-pressed="true"] { animation: none; }
+}
