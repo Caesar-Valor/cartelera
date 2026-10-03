@@ -191,69 +191,90 @@
   });
 
   /* ---------- Melodía en bucle ---------- */
+  // La fuente de sonido puede ser un <audio> (páginas de cada noche) o el <video> de la portada.
+  // El vídeo nunca se pausa para que siempre se vea: "silenciar" solo le quita el sonido.
   const melodia = document.getElementById('melodia');
   const botonMusica = document.getElementById('musica');
+  const esVideo = !!melodia && melodia.tagName === 'VIDEO';
   const VOLUMEN = 0.6;
   // Solo dura mientras la página está abierta: al volver a entrar, la música suena otra vez
   let silenciada = false;
+  let temporizadorFundido = null;
 
-  function marcarBoton(sonando) {
-    botonMusica.setAttribute('aria-pressed', String(sonando));
-    botonMusica.setAttribute('aria-label', sonando ? 'Silenciar música' : 'Activar música');
+  const sonando = () => !melodia.paused && !melodia.muted;
+
+  function marcarBoton() {
+    const activo = sonando();
+    botonMusica.setAttribute('aria-pressed', String(activo));
+    botonMusica.setAttribute('aria-label', activo ? 'Silenciar música' : 'Activar música');
   }
 
-  /** Sube el volumen poco a poco para que la música no entre de golpe. */
+  /** Sube el volumen poco a poco. Usa setInterval (no requestAnimationFrame)
+      porque este se detiene en segundo plano y dejaba el volumen atascado en 0. */
   function fundido() {
-    melodia.volume = 0;
-    const inicio = performance.now();
-    const paso = (t) => {
-      const p = Math.min((t - inicio) / 2000, 1);
-      melodia.volume = VOLUMEN * p;
-      if (p < 1 && !melodia.paused) requestAnimationFrame(paso);
-    };
-    requestAnimationFrame(paso);
+    clearInterval(temporizadorFundido);
+    const inicio = Date.now();
+    try { melodia.volume = 0; } catch { /* iOS no permite cambiar el volumen */ }
+    temporizadorFundido = setInterval(() => {
+      let p = Math.min((Date.now() - inicio) / 2000, 1);
+      try { melodia.volume = VOLUMEN * p; } catch { p = 1; }
+      if (p >= 1) clearInterval(temporizadorFundido);
+    }, 50);
   }
 
+  /** Intenta sonar. Si el navegador no lo permite, el vídeo sigue en silencio para que al menos se vea. */
   function reproducir() {
-    return melodia.play().then(() => {
-      fundido();
-      marcarBoton(true);
+    melodia.muted = false;
+    return melodia.play().then(fundido, (error) => {
+      if (esVideo) {
+        melodia.muted = true;
+        melodia.play().catch(() => {});
+      }
+      throw error;
     });
   }
 
-  function pausar() {
-    melodia.pause();
-    marcarBoton(false);
+  function silenciar() {
+    clearInterval(temporizadorFundido);
+    if (esVideo) melodia.muted = true;
+    else melodia.pause();
   }
 
   if (melodia && botonMusica) {
+    // El botón siempre refleja lo que de verdad está pasando
+    ['play', 'playing', 'pause', 'volumechange'].forEach((tipo) => melodia.addEventListener(tipo, marcarBoton));
+    marcarBoton();
+
     botonMusica.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (melodia.paused) {
-        silenciada = false;
-        reproducir().catch(() => marcarBoton(false));
-      } else {
+      if (sonando()) {
         silenciada = true;
-        pausar();
+        silenciar();
+      } else {
+        silenciada = false;
+        reproducir().catch(() => {});
       }
     });
 
-    // Siempre intenta sonar al abrir. Si el navegador bloquea el sonido automático,
-    // arranca con el primer toque, clic o tecla en cualquier parte de la página.
+    // Los navegadores solo dejan sonar tras un gesto real. Estos eventos sí cuentan como gesto,
+    // también en móvil (touchstart y pointerdown táctil NO cuentan, por eso fallaba en el teléfono).
+    const GESTOS = ['click', 'touchend', 'pointerup', 'keydown'];
     const arrancar = (e) => {
       if (botonMusica.contains(e.target)) return; // el propio botón ya lo gestiona
-      if (silenciada || !melodia.paused) return quitar();
-      reproducir().then(quitar, () => { /* sigue esperando otro gesto */ });
+      if (silenciada || sonando()) return;
+      reproducir().catch(() => { /* sigue esperando otro gesto */ });
     };
-    const quitar = () => {
-      ['pointerdown', 'keydown', 'touchstart'].forEach((tipo) =>
-        document.removeEventListener(tipo, arrancar, true));
-    };
+    GESTOS.forEach((tipo) => document.addEventListener(tipo, arrancar, { capture: true, passive: true }));
 
-    reproducir().catch(() => {
-      ['pointerdown', 'keydown', 'touchstart'].forEach((tipo) =>
-        document.addEventListener(tipo, arrancar, { capture: true, passive: true }));
-    });
+    // Al volver a la pestaña o a la app, o al regresar con el botón "atrás", retoma la música
+    const retomar = () => {
+      if (!document.hidden && !silenciada && !sonando()) reproducir().catch(() => {});
+    };
+    document.addEventListener('visibilitychange', retomar);
+    window.addEventListener('pageshow', retomar);
+
+    // Primer intento al abrir la página
+    reproducir().catch(() => {});
   }
 
   /* ---------- Vídeo en bucle hasta el segundo indicado en data-fin ---------- */

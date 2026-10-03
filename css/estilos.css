@@ -251,6 +251,15 @@ footer .nota { font-style: italic; color: var(--oro); }
     linear-gradient(180deg, rgba(59, 42, 99, .35), rgba(13, 10, 20, .1) 45%, rgba(110, 18, 32, .35));
 }
 
+/* ---------- Llegada a cada página: aparece desde la oscuridad ---------- */
+@keyframes llegar {
+  from { opacity: 0; filter: blur(6px); }
+}
+main { animation: llegar 1.1s ease both; }
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none; }
+}
+
 /* ---------- Protección del contenido ---------- */
 /* Sin seleccionar texto ni resaltar al tocar */
 body {

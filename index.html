@@ -19,15 +19,16 @@
 
   <script src="js/proteccion.js" defer></script>
   <script src="js/script.js" defer></script>
+  <script src="js/transicion.js" defer></script>
 </head>
 <body>
   
   <div class="fondo-video" aria-hidden="true">
-    <video id="melodia" src="index%20video.mp4" data-fin="30" loop playsinline></video>
+    <video id="melodia" src="index%20video.mp4" data-fin="30" muted loop playsinline preload="auto"></video>
   </div>
 
   <canvas id="brasas" aria-hidden="true"></canvas>
-  <button class="musica" id="musica" type="button" aria-pressed="true" aria-label="Activar música">
+  <button class="musica" id="musica" type="button" aria-pressed="false" aria-label="Activar música">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path class="nota-icono" d="M9 18V5l12-2v13" />
       <circle cx="6" cy="18" r="3" />
@@ -69,10 +70,12 @@
         <span class="noche__estado">Próximamente…</span>
       </a>
 
-      <a class="noche" href="1-de-noviembre.html">
+      <!-- Bloqueada hasta el 1 de noviembre: js/candado.js la abre ese día -->
+      <a class="noche noche--cerrada" aria-disabled="true"
+         data-desde="2026-11-01" data-href="1-de-noviembre.html" data-estado="Día de Muertos">
         <span class="noche__numero">V</span>
         <span class="noche__fecha">1 de noviembre</span>
-        <span class="noche__estado">Día de Muertos</span>
+        <span class="noche__estado">Se abre el 1 de noviembre</span>
       </a>
     </nav>
 

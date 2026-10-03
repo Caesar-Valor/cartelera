@@ -125,6 +125,63 @@ a.noche[href]:focus-visible {
   background: radial-gradient(circle at 35% 35%, #f1d9a6, var(--oro) 55%, #4a3414);
 }
 
+/* ---------- Transición al entrar por una puerta ---------- */
+.noche { perspective: 40rem; }
+
+/* Hoja de la puerta que se abre (creada desde js/transicion.js) */
+.noche__hoja {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, .25) 0 2px, transparent 2px 2.4rem),
+    linear-gradient(180deg, var(--luna), var(--fondo-puerta) 130%);
+  transform-origin: left center;
+  backface-visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+/* Pomo */
+.noche__hoja::after {
+  content: "";
+  position: absolute;
+  right: .9rem;
+  top: 58%;
+  width: .75rem;
+  height: .75rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f1d9a6, var(--oro) 55%, #4a3414);
+}
+
+/* Luz cálida al otro lado de la puerta */
+.noche__luz {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 55%, #fff4d6 0%, #f3c97a 35%, #b8935a 65%, rgba(184, 147, 90, .2) 100%);
+  box-shadow: 0 0 4rem 1rem rgba(243, 201, 122, .55);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.noche--entrando {
+  z-index: 2;
+  border-color: #f3c97a;
+}
+/* Mientras se entra, nada más responde al ratón */
+.transicionando .noche { pointer-events: none; }
+.transicionando .musica { opacity: 0; transition: opacity .6s; }
+
+/* Fundido final: destello desde la puerta y luego negro */
+.cortina {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), #fff1cf 0%, #f3c97a 12%, var(--tinta) 55%);
+}
+
 /* La última noche, Halloween */
 .noche--final { border-color: #c9772f; }
 
