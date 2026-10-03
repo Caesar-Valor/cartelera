@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" data-desde="2026-10-17">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120306">
+  <meta name="description" content="17 de octubre: la noche de los eternos.">
+  <!-- Seguridad y privacidad -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <title>La noche de los eternos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/luna-roja.css">
+
+  <script src="js/candado.js"></script>
+  <script src="js/proteccion.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body class="luna-roja">
+  <div class="fondo-luna-roja" aria-hidden="true"></div>
+  <canvas id="brasas" aria-hidden="true"></canvas>
+
+  <audio id="melodia" src="mp3/17deoctubre.mp3" loop autoplay preload="auto"></audio>
+  <button class="musica" id="musica" type="button" aria-pressed="false" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="nota-icono" d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <path class="tachado" d="M3 3l18 18" />
+    </svg>
+  </button>
+
+  <a class="volver" href="index.html" aria-label="Volver a las noches de octubre">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+    <span>Noches de octubre</span>
+  </a>
+
+  <main>
+    <header>
+      <p class="antetitulo">17 de octubre</p>
+      <h1>La noche de los eternos</h1>
+      <p class="intro">Un soldado que no quiere morir sin amor, y tres hermanas que harían cualquier cosa por no envejecer. Toca cada puerta para asomarte.</p>
+      <div class="regla" role="presentation"></div>
+    </header>
+
+    <ul class="puertas">
+      <li class="marco marco--granate" data-efecto="bruma">
+        <div class="umbral" id="u1" aria-hidden="true">
+          <h2>¿Cuánto tiempo esperarías por un amor perdido?</h2>
+          <p>Un príncipe lleva años buscando a su amor perdido, y cree haberlo encontrado en el rostro de una desconocida.</p>
+          <p class="pista">Pista: ella está prometida con otro.</p>
+          <p class="vibra">Vibra: pasión y penumbra</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u1">
+          <span class="numero">I</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Corazón atravesado por una espada -->
+            <path d="M50 84 C20 62 12 48 12 36 C12 24 21 16 31 16 C39 16 46 20 50 28 C54 20 61 16 69 16 C79 16 88 24 88 36 C88 48 80 62 50 84 Z" fill="#eadfc6"/>
+            <g fill="none" stroke-linecap="round">
+              <path d="M16 94 L84 12" stroke="#0d0a14" stroke-width="10"/>
+              <path d="M16 94 L84 12" stroke="#eadfc6" stroke-width="4"/>
+              <path d="M64 16 L84 32" stroke="#0d0a14" stroke-width="10"/>
+              <path d="M64 16 L84 32" stroke="#eadfc6" stroke-width="4"/>
+            </g>
+            <circle cx="88" cy="7" r="4.5" fill="#eadfc6" stroke="#0d0a14" stroke-width="2"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la primera puerta" data-cerrar="Cerrar la primera puerta">Abrir la primera puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--calabaza" data-efecto="llama">
+        <div class="umbral" id="u2" aria-hidden="true">
+          <h2>¿Qué pasa si enciendes lo que nadie debía encender?</h2>
+          <p>Un recién llegado que no cree en leyendas, una casa cerrada hace tres siglos y una sola noche para arreglar su error antes del amanecer.</p>
+          <p class="pista">Pista: el gato sabe más de lo que dice.</p>
+          <p class="vibra">Vibra: travesura y hechizos</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u2">
+          <span class="numero">II</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Sombrero de bruja -->
+            <path d="M28 78 C35 52 44 30 60 8 C61 18 58 25 63 30 C67 48 70 62 73 78 Z" fill="#eadfc6"/>
+            <ellipse cx="50" cy="80" rx="42" ry="10" fill="#eadfc6"/>
+            <path d="M31 68 Q51 77 71 68" fill="none" stroke="#0d0a14" stroke-width="6"/>
+            <rect x="45" y="66" width="11" height="11" rx="1.5" fill="#eadfc6" stroke="#0d0a14" stroke-width="2"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la segunda puerta" data-cerrar="Cerrar la segunda puerta">Abrir la segunda puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--pocion" data-efecto="brujas">
+        <div class="umbral" id="u3" aria-hidden="true">
+          <h2>¿Y si la historia se repite con otra generación?</h2>
+          <p>Tres amigas, un cumpleaños y un ritual que salió mejor de lo que debía. Las visitas de antaño han vuelto, y el pueblo sigue sin aprender.</p>
+          <p class="pista">Pista: son tres, y ninguna sirve de mucho sin las otras dos.</p>
+          <p class="vibra">Vibra: hermandad y caos</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u3">
+          <span class="numero">III</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Vela encendida -->
+            <path d="M50 8 C40 22 38 30 50 40 C62 30 60 22 50 8 Z" fill="#eadfc6"/>
+            <path d="M50 40 V48" stroke="#eadfc6" stroke-width="3" stroke-linecap="round"/>
+            <rect x="38" y="48" width="24" height="42" rx="3" fill="#eadfc6"/>
+            <path d="M28 92 H72" stroke="#eadfc6" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la tercera puerta" data-cerrar="Cerrar la tercera puerta">Abrir la tercera puerta</span>
+        </button>
+      </li>
+    </ul>
+
+    <section class="banquete" aria-labelledby="titulo-banquete">
+      <h2 id="titulo-banquete">El banquete de los eternos</h2>
+      <p>Tres tentaciones para quien se quede hasta el final.</p>
+      <dl>
+        <dt>Para picar</dt>
+        <dd>Las ruinas de un castillo oscuro y dulce, desmoronado a mordiscos.</dd>
+        <dt>El plato fuerte</dt>
+        <dd>Hebras enredadas bajo una salsa tan roja que más de un invitado preguntará de qué está hecha.</dd>
+        <dt>El final dulce</dt>
+        <dd>Una nube empapada tres veces, coronada con gotas rojas que nadie derramó por accidente.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p class="cierre">¿Estás preparada para cruzar el umbral?</p>
+      <p class="nota">Cuando la luna se tiñe, las historias despiertan.</p>
+    </footer>
+  </main>
+</body>
+</html>

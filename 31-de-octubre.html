@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es" data-desde="2026-10-31">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#070b14">
+  <meta name="description" content="31 de octubre: la noche más larga.">
+  <!-- Seguridad y privacidad -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <title>La noche más larga</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/escena.css">
+
+  <script src="js/candado.js"></script>
+  <script src="js/proteccion.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body class="escena">
+  <div class="fondo-escena" aria-hidden="true"></div>
+  <canvas id="brasas" aria-hidden="true"></canvas>
+
+  <audio id="melodia" src="mp3/31deoctubre.mp3" loop autoplay preload="auto"></audio>
+  <button class="musica" id="musica" type="button" aria-pressed="false" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="nota-icono" d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <path class="tachado" d="M3 3l18 18" />
+    </svg>
+  </button>
+
+  <a class="volver" href="index.html" aria-label="Volver a las noches de octubre">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+    <span>Noches de octubre</span>
+  </a>
+
+  <main>
+    <header>
+      <p class="antetitulo">31 de octubre</p>
+      <h1>La noche más larga</h1>
+      <p class="intro">Llueve, las luces parpadean y alguien dejó tres puertas sin cerrar. Toca cada una para asomarte.</p>
+      <div class="regla" role="presentation"></div>
+    </header>
+
+    <ul class="puertas">
+      <li class="marco marco--pizarra" data-efecto="telefono">
+        <div class="umbral" id="u1" aria-hidden="true">
+          <h2>¿Contestarías una llamada que no puede existir?</h2>
+          <p>Un sótano, una puerta cerrada y un aparato desconectado que no deja de sonar. Los que llaman ya pasaron por ahí.</p>
+          <p class="pista">Pista: los globos negros no anuncian ninguna fiesta.</p>
+          <p class="vibra">Vibra: encierro y coraje</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u1">
+          <span class="numero">I</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Teléfono antiguo -->
+            <path d="M16 42 C16 18 84 18 84 42 L84 50 L66 50 L66 42 C60 37 40 37 34 42 L34 50 L16 50 Z" fill="#eadfc6"/>
+            <path d="M22 88 L32 56 H68 L78 88 Z" fill="#eadfc6"/>
+            <circle cx="50" cy="73" r="9" fill="#0d0a14"/>
+            <circle cx="50" cy="73" r="3" fill="#eadfc6"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la primera puerta" data-cerrar="Cerrar la primera puerta">Abrir la primera puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--herencia" data-efecto="herencia">
+        <div class="umbral" id="u2" aria-hidden="true">
+          <h2>¿Qué harías con un poder que todos quieren que uses?</h2>
+          <p>Una joven deja su casa para estudiar donde la magia es asignatura, y descubre que su apellido pesa más de lo que creía.</p>
+          <p class="pista">Pista: su herencia viene en una caja que solo ella puede abrir.</p>
+          <p class="vibra">Vibra: magia y descubrimiento</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u2">
+          <span class="numero">II</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Calabaza -->
+            <path d="M50 30 C48 20 52 14 60 12" fill="none" stroke="#eadfc6" stroke-width="5" stroke-linecap="round"/>
+            <g fill="#eadfc6" stroke="#0d0a14" stroke-width="2">
+              <ellipse cx="28" cy="60" rx="18" ry="26"/>
+              <ellipse cx="72" cy="60" rx="18" ry="26"/>
+              <ellipse cx="50" cy="60" rx="20" ry="30"/>
+            </g>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la segunda puerta" data-cerrar="Cerrar la segunda puerta">Abrir la segunda puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--madrugada" data-efecto="camara">
+        <div class="umbral" id="u3" aria-hidden="true">
+          <h2>¿Qué se mueve en casa cuando todos duermen?</h2>
+          <p>Dos hermanas pequeñas, un amigo que solo una de ellas puede ver y unas cámaras que graban lo que nadie quería saber.</p>
+          <p class="pista">Pista: la abuela sabe por qué.</p>
+          <p class="vibra">Vibra: silencio y pavor</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u3">
+          <span class="numero">III</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Cámara de vídeo grabando -->
+            <rect x="14" y="32" width="50" height="38" rx="6" fill="#eadfc6"/>
+            <path d="M64 46 L86 32 V70 L64 56 Z" fill="#eadfc6"/>
+            <circle cx="27" cy="44" r="5" fill="#0d0a14"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la tercera puerta" data-cerrar="Cerrar la tercera puerta">Abrir la tercera puerta</span>
+        </button>
+      </li>
+    </ul>
+
+    <section class="banquete" aria-labelledby="titulo-banquete">
+      <h2 id="titulo-banquete">El banquete de la noche más larga</h2>
+      <p>Cuatro tentaciones para quien se quede hasta el final.</p>
+      <dl>
+        <dt>Para picar</dt>
+        <dd>Pequeños cofres dorados que guardan un corazón que se estira.</dd>
+        <dt>El plato fuerte</dt>
+        <dd>Un caldero de granos lentos, dorado por una raíz antigua y lleno de pequeños sombreros recogidos del bosque.</dd>
+        <dt>El final dulce</dt>
+        <dd>Un pastel que esconde en su interior lo que crece bajo tierra, cubierto por un manto blanco.</dd>
+        <dt>Para el último umbral</dt>
+        <dd>Una poción oscura y espesa que se bebe con las dos manos, por si acaso.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p class="cierre">¿Estás preparada para cruzar la línea?</p>
+      <p class="nota">Esta es la noche que todas las demás estaban esperando.</p>
+    </footer>
+  </main>
+</body>
+</html>

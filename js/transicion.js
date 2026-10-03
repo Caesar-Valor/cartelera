@@ -1,9 +1,4 @@
-/* ==========================================================
-   Cartelera misteriosa — transición al entrar por una puerta (portada)
-   1. La puerta se abre hacia dentro y deja salir luz.
-   2. La cámara "entra" por la puerta y todo se funde a negro.
-   3. Se carga la página de esa noche.
-   ========================================================== */
+
 (() => {
   'use strict';
 

@@ -125,6 +125,12 @@ a.noche[href]:focus-visible {
   background: radial-gradient(circle at 35% 35%, #f1d9a6, var(--oro) 55%, #4a3414);
 }
 
+/* Las cerradas con animación propia (data-bloqueo) invitan a tocarlas */
+.noche--cerrada[data-bloqueo] { cursor: pointer; }
+
+/* Ojos de gato que aparecen en la puerta del 17 de octubre (creados desde js/script.js) */
+.ojos-gato { filter: drop-shadow(0 0 10px #ff1f33) drop-shadow(0 0 24px rgba(255, 31, 51, .7)); }
+
 /* ---------- Transición al entrar por una puerta ---------- */
 .noche { perspective: 40rem; }
 

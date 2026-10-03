@@ -312,6 +312,47 @@ img, video { pointer-events: none; }
   z-index: 4;
 }
 
+/* Efectos que comparten varias noches y las puertas cerradas de la portada */
+.relampago { filter: drop-shadow(0 0 8px #9fd2ff); }
+
+.bruma {
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(210, 25, 50, .8) 0%, rgba(122, 15, 28, .4) 45%, transparent 70%);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+}
+
+.haz {
+  transform-origin: 50% 100%;
+  background: linear-gradient(to top, rgba(255, 215, 130, .95), rgba(181, 101, 29, .4) 60%, transparent);
+  filter: blur(8px);
+  mix-blend-mode: screen;
+}
+
+.interferencia {
+  background: repeating-linear-gradient(180deg, rgba(190, 215, 255, .14) 0 1px, transparent 1px 4px);
+}
+
+.barrido {
+  background: linear-gradient(180deg, transparent, rgba(190, 215, 255, .22), transparent);
+}
+
+.rec {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: #f2f4f8;
+  font: 700 1.1rem/1 "Courier New", monospace;
+  letter-spacing: .15em;
+}
+.rec span {
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  background: #e3122a;
+  box-shadow: 0 0 8px #e3122a;
+}
+
 /* ---------- Botón de música ---------- */
 .musica {
   position: fixed;

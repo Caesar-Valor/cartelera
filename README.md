@@ -22,17 +22,23 @@ the page lets you discover it: open the doors, follow the clues, guess the movie
 ```
 index.html               main page: one door per night
 3-de-octubre.html        night I: three doors, three worlds
+10-de-octubre.html       night II: adventures, melancholy and surprise
+17-de-octubre.html       night III: the night of the eternal ones
+31-de-octubre.html       night IV: the longest night
 1-de-noviembre.html      night V: Day of the Dead sunrise
 css/estilos.css          shared styles
 css/portada.css          main page styles
 css/noviembre.css        Day of the Dead styles
+css/laboratorio.css      night II styles
+css/luna-roja.css        night III styles
+css/escena.css           night IV styles
 js/script.js             doors, effects, embers and music
-welcome to hallowen.mp3  background melody
+mp3/                     background melodies
 ```
 
 ## How to open it
 
-Open `index.html` in any modern browser and pick a night. Keep the `.mp3` next to it so the music works.
+Open `index.html` in any modern browser and pick a night. Keep the `mp3/` folder next to it so the music works.
 
 ## October 2026 plan
 
@@ -41,9 +47,9 @@ Five nights, each with a different dynamic:
 | Night | Date      | Dynamic                                     |
 |-------|-----------|---------------------------------------------|
 | I     | Oct 3     | **Three doors, three worlds** (current page) |
-| II    | Oct 10    | Coming soon…                                |
-| III   | Oct 17    | Coming soon…                                |
-| IV    | Oct 31    | Coming soon… 🎃                              |
+| II    | Oct 10    | **Adventures, melancholy and surprise**     |
+| III   | Oct 17    | **The night of the eternal ones**           |
+| IV    | Oct 31    | **The longest night** 🎃                     |
 | V     | Nov 1     | **Day of the Dead sunrise**                 |
 
 This is a work in progress. I'll keep improving it week by week until the last night.

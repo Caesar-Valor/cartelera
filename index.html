@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/portada.css">
 
+  <script src="js/candado.js"></script>
   <script src="js/proteccion.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="js/transicion.js" defer></script>
@@ -52,27 +53,31 @@
         <span class="noche__estado">Tres puertas, tres mundos</span>
       </a>
 
-      <a class="noche noche--cerrada" aria-disabled="true">
+      <!-- Bloqueadas hasta su fecha: js/candado.js las abre solas ese día.
+           data-bloqueo es la animación que se ve al tocarlas antes de tiempo (js/script.js) -->
+      <a class="noche noche--cerrada" aria-disabled="true"
+         data-desde="2026-10-10" data-href="10-de-octubre.html" data-estado="Aventuras, melancolía y sorpresa" data-bloqueo="rayo">
         <span class="noche__numero">II</span>
         <span class="noche__fecha">10 de octubre</span>
-        <span class="noche__estado">Próximamente…</span>
+        <span class="noche__estado">Se abre el 10 de octubre</span>
       </a>
 
-      <a class="noche noche--cerrada" aria-disabled="true">
+      <a class="noche noche--cerrada" aria-disabled="true"
+         data-desde="2026-10-17" data-href="17-de-octubre.html" data-estado="La noche de los eternos" data-bloqueo="gato">
         <span class="noche__numero">III</span>
         <span class="noche__fecha">17 de octubre</span>
-        <span class="noche__estado">Próximamente…</span>
+        <span class="noche__estado">Se abre el 17 de octubre</span>
       </a>
 
-      <a class="noche noche--cerrada noche--final" aria-disabled="true">
+      <a class="noche noche--cerrada noche--final" aria-disabled="true"
+         data-desde="2026-10-31" data-href="31-de-octubre.html" data-estado="La noche más larga" data-bloqueo="camara">
         <span class="noche__numero">IV</span>
         <span class="noche__fecha">31 de octubre</span>
-        <span class="noche__estado">Próximamente…</span>
+        <span class="noche__estado">Se abre el 31 de octubre</span>
       </a>
 
-      <!-- Bloqueada hasta el 1 de noviembre: js/candado.js la abre ese día -->
       <a class="noche noche--cerrada" aria-disabled="true"
-         data-desde="2026-11-01" data-href="1-de-noviembre.html" data-estado="Día de Muertos">
+         data-desde="2026-11-01" data-href="1-de-noviembre.html" data-estado="Día de Muertos" data-bloqueo="luz">
         <span class="noche__numero">V</span>
         <span class="noche__fecha">1 de noviembre</span>
         <span class="noche__estado">Se abre el 1 de noviembre</span>

@@ -1,0 +1,64 @@
+/* ==========================================================
+   Cartelera misteriosa — 31 de octubre (noche de Halloween)
+   Usa las variables definidas en estilos.css
+   ========================================================== */
+
+:root {
+  --pizarra: #1e2630;
+  --herencia: #b5651d;
+  --madrugada: #16233a;
+}
+
+body.escena { background: #070b14; }
+
+/* ---------- Fondo de la calle bajo la lluvia difuminado ---------- */
+.fondo-escena {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.fondo-escena::before {
+  content: "";
+  position: absolute;
+  inset: -2rem; /* margen extra para que el desenfoque no deje bordes claros */
+  background: url("../img/31deoctubre.jpg") center / cover no-repeat;
+  filter: blur(3px) brightness(1.05) contrast(1.05);
+}
+/* Velo oscuro para que puertas y textos se lean bien */
+.fondo-escena::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(7, 11, 20, .15) 0%, rgba(7, 11, 20, .65) 85%),
+    linear-gradient(180deg, rgba(31, 58, 107, .3), rgba(7, 11, 20, .1) 45%, rgba(122, 20, 32, .3));
+}
+
+.escena main { text-shadow: 0 2px 10px rgba(7, 11, 20, .85); }
+
+/* ---------- Puertas ---------- */
+.marco--pizarra   { --c: var(--pizarra); }
+.marco--herencia  { --c: var(--herencia); }
+.marco--madrugada { --c: var(--madrugada); }
+
+/* ---------- Efectos (creados desde JS) ---------- */
+.onda {
+  border: 2px solid rgba(220, 230, 245, .85);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(200, 215, 240, .6);
+}
+
+.globo {
+  width: 3.2rem;
+  height: 6.4rem;
+  filter: drop-shadow(0 .4rem .6rem rgba(0, 0, 0, .6));
+}
+
+.apagon { background: #000; }
+
+.mota {
+  border-radius: 50%;
+  background: #cfd8e6;
+  box-shadow: 0 0 4px rgba(207, 216, 230, .8);
+}
