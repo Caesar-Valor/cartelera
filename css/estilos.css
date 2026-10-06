@@ -135,6 +135,27 @@ h1 {
 }
 .abierta .umbral { opacity: 1; }
 
+/* Con foto de la película: <img class="umbral__foto"> como primer hijo del umbral.
+   El velo oscuro mantiene legible el texto; object-position ajusta el encuadre. */
+.umbral--foto {
+  isolation: isolate;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .95), 0 0 .8rem rgba(0, 0, 0, .8);
+}
+.umbral__foto,
+.umbral--foto::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+.umbral__foto { object-fit: cover; }
+.umbral__foto[data-src] { display: none; } /* aún sin revelar (js/candado.js) */
+.umbral--foto::after {
+  content: "";
+  background: linear-gradient(180deg, rgba(8, 6, 14, .45) 0%, rgba(8, 6, 14, .75) 100%);
+}
+
 .umbral h2 {
   font-family: var(--display);
   font-size: 1.2rem;

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" data-desde="2026-11-10">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0f1c">
+  <meta name="description" content="10 de noviembre: tres puertas en el laboratorio de medianoche.">
+  <!-- Seguridad y privacidad -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <title>El laboratorio de medianoche</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/laboratorio.css">
+
+  <script src="js/candado.js"></script>
+  <script src="js/proteccion.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body class="laboratorio">
+  <div class="fondo-laboratorio" aria-hidden="true"></div>
+  <canvas id="brasas" aria-hidden="true"></canvas>
+
+  <audio id="melodia" src="mp3/10denoviembre.mp3" loop autoplay preload="auto"></audio>
+  <button class="musica" id="musica" type="button" aria-pressed="false" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="nota-icono" d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <path class="tachado" d="M3 3l18 18" />
+    </svg>
+  </button>
+
+  <a class="volver" href="index.html" aria-label="Volver a las noches de octubre">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+    <span>Noches de octubre</span>
+  </a>
+
+  <main>
+    <header>
+      <p class="antetitulo">10 de noviembre</p>
+      <h1>El laboratorio de medianoche</h1>
+      <p class="intro">Entre frascos, velas y planos olvidados, tres experimentos esperan a que alguien se atreva. Toca cada puerta para asomarte.</p>
+      <div class="regla" role="presentation"></div>
+    </header>
+
+    <ul class="puertas">
+      <li class="marco marco--rayo" data-efecto="rayo">
+        <div class="umbral" id="u1" aria-hidden="true">
+          <h2>¿Hasta dónde llegarías por no decir adiós?</h2>
+          <p>Un niño, un ático lleno de cables y una tormenta que llega justo a tiempo.</p>
+          <p class="pista">Pista: su mejor amigo tiene cuatro patas y unas cuantas costuras.</p>
+          <p class="vibra">Vibra: ternura y relámpagos</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u1">
+          <span class="numero">I</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Rayo -->
+            <path d="M58 8 L26 56 H46 L40 92 L74 40 H54 Z" fill="#eadfc6"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la primera puerta" data-cerrar="Cerrar la primera puerta">Abrir la primera puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--pocion" data-efecto="burbujas">
+        <div class="umbral" id="u2" aria-hidden="true">
+          <h2>¿Beberías un secreto que dura para siempre?</h2>
+          <p>Un frasco que brilla, dos rivales y una promesa que nadie leyó hasta el final.</p>
+          <p class="pista">Pista: la juventud eterna no trae garantía contra las escaleras.</p>
+          <p class="vibra">Atmósfera: vanidad y veneno</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u2">
+          <span class="numero">II</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Frasco de poción -->
+            <path d="M31 66 H69 L78 80 C82 88 76 92 70 92 H30 C24 92 18 88 22 80 Z" fill="#eadfc6"/>
+            <path d="M38 12 H62 M44 12 V40 L22 80 C18 88 24 92 30 92 H70 C76 92 82 88 78 80 L56 40 V12" fill="none" stroke="#eadfc6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="47" cy="54" r="3" fill="#eadfc6"/>
+            <circle cx="54" cy="44" r="2" fill="#eadfc6"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la segunda puerta" data-cerrar="Cerrar la segunda puerta">Abrir la segunda puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--escarcha" data-efecto="nieve">
+        <div class="umbral" id="u3" aria-hidden="true">
+          <h2>¿Se puede acariciar sin hacer daño?</h2>
+          <p>Un inventor que no terminó su obra y un castillo sobre un vecindario de colores pastel.</p>
+          <p class="pista">Pista: desde que él vive allá arriba, aquí abajo nieva.</p>
+          <p class="vibra">Vibra: melancolía y nieve</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u3">
+          <span class="numero">III</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Tijeras -->
+            <g fill="none" stroke="#eadfc6" stroke-width="5" stroke-linecap="round">
+              <path d="M40 67 L66 12 M60 67 L34 12"/>
+              <circle cx="34" cy="78" r="11"/>
+              <circle cx="66" cy="78" r="11"/>
+            </g>
+            <circle cx="50" cy="46" r="3" fill="#eadfc6"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la tercera puerta" data-cerrar="Cerrar la tercera puerta">Abrir la tercera puerta</span>
+        </button>
+      </li>
+    </ul>
+
+    <section class="banquete" aria-labelledby="titulo-banquete">
+      <h2 id="titulo-banquete">El banquete del laboratorio</h2>
+      <p>Tres fórmulas para quien se quede hasta el final.</p>
+      <dl>
+        <dt>Para acercar a la llama</dt>
+        <dd>Nubes blancas que se doran al fuego y se rinden por dentro.</dd>
+        <dt>El experimento principal</dt>
+        <dd>Un disco recién salido del horno donde cada quien mezcla su propia fórmula.</dd>
+        <dt>La poción final</dt>
+        <dd>Un brebaje oscuro y burbujeante, servido frío, con una nube helada flotando encima.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p class="cierre">¿Estás preparada para encender el experimento?</p>
+      <p class="nota">Esta noche, la ciencia y la magia se confunden.</p>
+    </footer>
+  </main>
+</body>
+</html>
