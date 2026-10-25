@@ -1,0 +1,78 @@
+/* ==========================================================
+   Cartelera misteriosa — 25 de octubre (cementerio en la bruma)
+   Usa las variables definidas en estilos.css
+   ========================================================== */
+
+:root {
+  --ceniza: #4a5560;
+  --malva: #5a2f6b;
+}
+
+body.cementerio { background: #0b0d10; }
+
+/* ---------- Fondo del cementerio difuminado ---------- */
+.fondo-cementerio {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.fondo-cementerio::before {
+  content: "";
+  position: absolute;
+  inset: -2rem; /* margen extra para que el desenfoque no deje bordes claros */
+  background: url("../img/25%20de%20octubre.jpeg") center / cover no-repeat;
+  filter: blur(3px) brightness(.85) contrast(1.1);
+}
+/* Velo oscuro para que puertas y textos se lean bien */
+.fondo-cementerio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(11, 13, 16, .2) 0%, rgba(11, 13, 16, .75) 85%),
+    linear-gradient(180deg, rgba(90, 47, 107, .25), rgba(11, 13, 16, .15) 45%, rgba(74, 85, 96, .3));
+}
+
+.cementerio main { text-shadow: 0 2px 10px rgba(11, 13, 16, .9); }
+
+/* ---------- Dos puertas en lugar de tres ---------- */
+.puertas--dos {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 52rem) {
+  .puertas--dos { grid-template-columns: 1fr; max-width: 21rem; }
+}
+
+.marco--ceniza { --c: var(--ceniza); }
+.marco--malva  { --c: var(--malva); }
+
+/* ---------- Efectos (creados desde JS) ---------- */
+.bruma--gris {
+  background: radial-gradient(circle, rgba(235, 238, 242, .85) 0%, rgba(160, 170, 180, .45) 45%, transparent 70%);
+  filter: blur(14px);
+}
+
+.tentaculo {
+  width: 5rem;
+  filter: drop-shadow(0 0 10px rgba(200, 210, 220, .35));
+}
+
+.penumbra { background: #000; }
+
+.hora {
+  font-family: var(--display);
+  font-size: clamp(4rem, 18vw, 9rem);
+  color: #ff2b3d;
+  text-shadow: 0 0 18px rgba(255, 30, 50, .9), 0 0 50px rgba(255, 30, 50, .6);
+  white-space: nowrap;
+}
+
+.corredor {
+  width: 3.2rem;
+  height: 3.2rem;
+  filter: drop-shadow(0 0 6px rgba(190, 120, 255, .8));
+}

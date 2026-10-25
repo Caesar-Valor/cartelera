@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es" data-desde="2026-10-25">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="25 de octubre: la noche de los ausentes.">
+  <!-- Seguridad y privacidad -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noimageindex, noarchive">
+  <title>La noche de los ausentes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/cementerio.css">
+
+  <script src="js/candado.js"></script>
+  <script src="js/proteccion.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body class="cementerio">
+  <div class="fondo-cementerio" aria-hidden="true"></div>
+  <canvas id="brasas" aria-hidden="true"></canvas>
+
+  <audio id="melodia" src="mp3/25%20de%20octubre.mp3" loop autoplay preload="auto"></audio>
+  <button class="musica" id="musica" type="button" aria-pressed="false" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="nota-icono" d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+      <path class="tachado" d="M3 3l18 18" />
+    </svg>
+  </button>
+
+  <a class="volver" href="index.html" aria-label="Volver a las noches de octubre">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+    <span>Noches de octubre</span>
+  </a>
+
+  <main>
+    <header>
+      <p class="antetitulo">25 de octubre</p>
+      <h1>La noche de los ausentes</h1>
+      <p class="intro">Una noche improvisada, dos historias de gente que no vuelve: unos no pueden salir, otros se marcharon sin que nadie los viera. Toca cada puerta para asomarte.</p>
+      <div class="regla" role="presentation"></div>
+    </header>
+
+    <ul class="puertas puertas--dos">
+      <li class="marco marco--ceniza" data-efecto="tentaculos">
+        <div class="umbral umbral--foto" id="u1" aria-hidden="true">
+          <img class="umbral__foto" data-src="img/niebla%20imagen.jpeg" alt="">
+          <h2>¿Qué harías si no pudieras ver lo que te espera afuera?</h2>
+          <p>Después de una tormenta, un padre y su hijo bajan al pueblo por provisiones. Algo llega desde el lago, y nadie se atreve a cruzar la puerta de la tienda.</p>
+          <p class="pista">Pista: lo más peligroso no está afuera, sino entre los que se quedaron dentro.</p>
+          <p class="vibra">Vibra: encierro y desesperación</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u1">
+          <span class="numero">I</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Tentáculo que asoma -->
+            <path d="M34 94 C30 70 26 52 38 36 C48 22 66 22 66 36 C66 44 58 48 54 42 C58 40 58 34 52 34 C44 34 42 46 46 60 C50 74 54 84 54 94 Z" fill="#eadfc6"/>
+            <g fill="#0d0a14">
+              <circle cx="44" cy="76" r="2.6"/>
+              <circle cx="41" cy="64" r="2.4"/>
+              <circle cx="40" cy="52" r="2.1"/>
+              <circle cx="45" cy="42" r="1.8"/>
+            </g>
+            <path d="M10 94 H90" stroke="#eadfc6" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la primera puerta" data-cerrar="Cerrar la primera puerta">Abrir la primera puerta</span>
+        </button>
+      </li>
+
+      <li class="marco marco--malva" data-efecto="estampida">
+        <div class="umbral umbral--foto" id="u2" aria-hidden="true">
+          <img class="umbral__foto" data-src="img/la%20hora%20de%20la%20desapara.jpeg" alt="">
+          <h2>¿Qué despierta a un niño a las 2:17 de la madrugada?</h2>
+          <p>Una noche, a la misma hora, todos los alumnos de una clase salieron de sus casas y corrieron hacia la oscuridad. Solo uno se quedó en su pupitre a la mañana siguiente.</p>
+          <p class="pista">Pista: corrían con los brazos abiertos, y alguien en el pueblo sabe por qué.</p>
+          <p class="vibra">Vibra: inquietud y hechicería</p>
+        </div>
+        <button class="hoja" type="button" aria-expanded="false" aria-controls="u2">
+          <span class="numero">II</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <!-- Reloj detenido a las 2:17 -->
+            <circle cx="50" cy="52" r="38" fill="#eadfc6"/>
+            <circle cx="50" cy="52" r="31" fill="none" stroke="#0d0a14" stroke-width="2"/>
+            <g stroke="#0d0a14" stroke-linecap="round">
+              <path d="M50 26 V31 M50 73 V78 M24 52 H29 M71 52 H76" stroke-width="3"/>
+              <path d="M50 52 L62 44" stroke-width="5"/>
+              <path d="M50 52 L69 61" stroke-width="3"/>
+            </g>
+            <circle cx="50" cy="52" r="3.5" fill="#0d0a14"/>
+            <path d="M40 12 H60" stroke="#eadfc6" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span class="llamar" data-abrir="Abrir la segunda puerta" data-cerrar="Cerrar la segunda puerta">Abrir la segunda puerta</span>
+        </button>
+      </li>
+    </ul>
+
+    <section class="banquete" aria-labelledby="titulo-banquete">
+      <h2 id="titulo-banquete">El banquete de los ausentes</h2>
+      <p>Dos tentaciones para quien no desaparezca antes del final.</p>
+      <dl>
+        <dt>El plato fuerte</dt>
+        <dd>Esta noche el destino aún no decide su forma: puede llegar redonda y partida en porciones, como un reloj al que le robaron las agujas, o escondida entre dos tapas, guardando su secreto caliente hasta el primer mordisco. Se sabrá cuando suene la hora.</dd>
+        <dt>El final dulce</dt>
+        <dd>Una torre suave coronada de pequeñas llamas que deben morir de un solo soplo, mientras alguien pide en silencio un deseo que nadie más puede escuchar.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <p class="cierre">¿Te atreves a seguir aquí cuando den las dos?</p>
+      <p class="nota">Cuando la bruma baja, alguien deja de volver a casa.</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -48,7 +48,8 @@ body:has(.fondo-video) { background: transparent; }
 .fondo-video ~ main .noche:nth-child(3) { animation-delay: 1.6s; }
 .fondo-video ~ main .noche:nth-child(4) { animation-delay: 1.75s; }
 .fondo-video ~ main .noche:nth-child(5) { animation-delay: 1.9s; }
-.fondo-video ~ main footer { animation: aparecer 1s ease 2.2s both; }
+.fondo-video ~ main .noche:nth-child(6) { animation-delay: 2.05s; }
+.fondo-video ~ main footer { animation: aparecer 1s ease 2.35s both; }
 
 .noches {
   display: grid;
@@ -104,6 +105,16 @@ a.noche[href]:focus-visible {
   font-style: italic;
   font-size: .95rem;
   color: var(--oro);
+}
+
+.noche__pista {
+  max-width: 12rem;
+  font-style: italic;
+  font-size: .85rem;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--hueso);
+  opacity: .8;
 }
 
 /* Noches que aún no se han abierto */

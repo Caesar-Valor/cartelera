@@ -782,7 +782,149 @@
     }
   }
 
+  /* ---------- 25 de octubre, puerta I: la bruma se espesa y algo asoma desde abajo ---------- */
+  const SVG_TENTACULO =
+    '<svg viewBox="0 0 40 200" preserveAspectRatio="none"><path fill="#0a0d10" stroke="#9aa6b0" stroke-width="1.2" ' +
+    'd="M10 200 C6 150 2 110 10 72 C16 42 34 30 32 14 C31 5 24 2 20 8 C25 11 25 22 19 34 C9 56 20 100 28 140 C31 165 31 185 30 200 Z"/>' +
+    '<g fill="#5e6a74"><circle cx="17" cy="170" r="3"/><circle cx="14" cy="140" r="2.8"/><circle cx="13" cy="110" r="2.5"/>' +
+    '<circle cx="15" cy="82" r="2.2"/><circle cx="20" cy="58" r="1.9"/></g></svg>';
+
+  function emerger(r) {
+    const x0 = r.left + r.width / 2;
+    const y0 = r.top + r.height * 0.5;
+    const anchoVentana = window.innerWidth;
+    const altoVentana = window.innerHeight;
+
+    // Un manto blanco que lo cubre todo y tarda en irse
+    resplandor(x0, y0, 'rgba(225,230,236,.8)', [
+      { opacity: 0 },
+      { opacity: 0.9, offset: 0.2 },
+      { opacity: 0.75, offset: 0.7 },
+      { opacity: 0 }
+    ], { duration: 5200, delay: 200 });
+
+    // Bruma que sube desde el suelo de toda la pantalla
+    for (let i = 0; i < 30; i++) {
+      const t = azar(220, 460);
+
+      particula({
+        clase: 'bruma bruma--gris',
+        x: azar(-0.1, 1.1) * anchoVentana,
+        y: altoVentana + azar(0, 80),
+        ancho: t,
+        alto: t,
+        fotogramas: [
+          { transform: 'translate(-50%,-50%) scale(0.5)', opacity: 0 },
+          { transform: mover(azar(-80, 80), -altoVentana * azar(0.3, 0.6), 'scale(1.3)'), opacity: 0.9, offset: 0.4 },
+          { transform: mover(azar(-160, 160), -altoVentana * azar(0.7, 1), 'scale(2)'), opacity: 0 }
+        ],
+        opciones: { duration: azar(4200, 6200), delay: 150 + i * 60, easing: 'ease-out' }
+      });
+    }
+
+    // Tentáculos que salen de la bruma, se retuercen y vuelven a hundirse
+    const cuantos = anchoVentana < 600 ? 4 : 6;
+    for (let i = 0; i < cuantos; i++) {
+      const alto = altoVentana * azar(0.45, 0.75);
+      const giro = azar(8, 18) * (i % 2 ? 1 : -1);
+
+      particula({
+        clase: 'tentaculo',
+        html: SVG_TENTACULO,
+        x: ((i + 0.5) / cuantos + azar(-0.06, 0.06)) * anchoVentana,
+        y: altoVentana,
+        alto,
+        estilos: { transformOrigin: '50% 100%' },
+        fotogramas: [
+          { transform: 'translate(-50%, 0) rotate(0deg)', opacity: 0 },
+          { transform: `translate(-50%, -100%) rotate(${giro}deg)`, opacity: 1, offset: 0.3 },
+          { transform: `translate(-50%, -96%) rotate(${-giro}deg)`, opacity: 1, offset: 0.55 },
+          { transform: `translate(-50%, -100%) rotate(${giro * 0.6}deg)`, opacity: 1, offset: 0.72 },
+          { transform: 'translate(-50%, 0) rotate(0deg)', opacity: 0.6 }
+        ],
+        opciones: { duration: azar(3600, 4400), delay: 900 + i * 220, easing: 'cubic-bezier(.4,0,.3,1)' }
+      });
+    }
+  }
+
+  /* ---------- 25 de octubre, puerta II: dan las 2:17 y los niños echan a correr ---------- */
+  const SVG_CORREDOR =
+    '<svg viewBox="0 0 60 60"><g fill="none" stroke="#0b0710" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M2 24 L30 21 L58 18"/><path d="M30 21 L26 38"/><path d="M26 38 L36 46 L34 57"/><path d="M26 38 L18 48 L8 50"/></g>' +
+    '<circle cx="32" cy="11" r="6.5" fill="#0b0710"/></svg>';
+
+  function huir(r) {
+    const x0 = r.left + r.width / 2;
+    const y0 = r.top + r.height * 0.6;
+    const anchoVentana = window.innerWidth;
+    const altoVentana = window.innerHeight;
+
+    // La casa se queda a oscuras
+    particula({
+      clase: 'penumbra',
+      x: 0,
+      y: 0,
+      ancho: anchoVentana,
+      alto: altoVentana,
+      fotogramas: [
+        { opacity: 0 },
+        { opacity: 0.85, offset: 0.1 },
+        { opacity: 0.8, offset: 0.8 },
+        { opacity: 0 }
+      ],
+      opciones: { duration: 4600, delay: 200 }
+    });
+
+    // La hora parpadea como un despertador
+    particula({
+      clase: 'hora',
+      html: '2:17',
+      x: anchoVentana / 2,
+      y: altoVentana * 0.32,
+      fotogramas: [
+        { transform: 'translate(-50%,-50%) scale(0.8)', opacity: 0 },
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1, offset: 0.12 },
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 0.1, offset: 0.2 },
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1, offset: 0.28 },
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 0.1, offset: 0.36 },
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1, offset: 0.44 },
+        { transform: 'translate(-50%,-50%) scale(1.05)', opacity: 1, offset: 0.8 },
+        { transform: 'translate(-50%,-50%) scale(1.2)', opacity: 0 }
+      ],
+      opciones: { duration: 4200, delay: 400 }
+    });
+
+    // Diecisiete siluetas salen corriendo con los brazos abiertos
+    for (let i = 0; i < 17; i++) {
+      const lado = i % 2 ? 1 : -1;
+      const voltear = lado < 0 ? 'scaleX(-1)' : '';
+      const dx = lado * (anchoVentana / 2 + azar(120, 300));
+      const dy = azar(-0.25, 0.3) * altoVentana;
+      const esc = azar(0.7, 1.4);
+      // Cada zancada sube y baja un poco la silueta
+      const paso = (f, salto) => mover(dx * f, dy * f - salto, `${voltear} scale(${esc})`);
+
+      particula({
+        clase: 'corredor',
+        html: SVG_CORREDOR,
+        x: x0 + azar(-0.2, 0.2) * r.width,
+        y: y0,
+        fotogramas: [
+          { transform: mover(0, 0, `${voltear} scale(0)`), opacity: 0 },
+          { transform: paso(0.1, 10), opacity: 1, offset: 0.1 },
+          { transform: paso(0.3, 0), opacity: 1, offset: 0.3 },
+          { transform: paso(0.5, 10), opacity: 1, offset: 0.5 },
+          { transform: paso(0.7, 0), opacity: 1, offset: 0.7 },
+          { transform: paso(1, 10), opacity: 0 }
+        ],
+        opciones: { duration: azar(2200, 3200), delay: 1700 + i * 90, easing: 'ease-in' }
+      });
+    }
+  }
+
   const EFECTOS = {
+    tentaculos: emerger,
+    estampida: huir,
     murcielagos: soltarMurcielagos,
     sangre: derramar,
     hechizo: hechizar,

@@ -1,7 +1,7 @@
 # Cartelera misteriosa 🎃
 
 A small, handmade web page I built as a "mystery billboard" for our October nights.
-Each of the five nights gets its own surprise. Instead of just announcing the plan,
+Each of the six nights gets its own surprise. Instead of just announcing the plan,
 the page lets you discover it: open the doors, follow the clues, guess the movie.
 
 ## How I made it
@@ -24,14 +24,16 @@ index.html               main page: one door per night
 3-de-octubre.html        night I: three doors, three worlds
 10-de-octubre.html       night II: adventures, melancholy and surprise
 17-de-octubre.html       night III: the night of the eternal ones
-31-de-octubre.html       night IV: the longest night
-1-de-noviembre.html      night V: Day of the Dead sunrise
+25-de-octubre.html       night IV: the night of the absent ones (two doors)
+31-de-octubre.html       night V: the longest night
+1-de-noviembre.html      night VI: Day of the Dead sunrise
 css/estilos.css          shared styles
 css/portada.css          main page styles
 css/noviembre.css        Day of the Dead styles
 css/laboratorio.css      night II styles
 css/luna-roja.css        night III styles
-css/escena.css           night IV styles
+css/cementerio.css       night IV styles
+css/escena.css           night V styles
 js/script.js             doors, effects, embers and music
 mp3/                     background melodies
 ```
@@ -42,14 +44,15 @@ Open `index.html` in any modern browser and pick a night. Keep the `mp3/` folder
 
 ## October 2026 plan
 
-Five nights, each with a different dynamic:
+Six nights, each with a different dynamic:
 
 | Night | Date      | Dynamic                                     |
 |-------|-----------|---------------------------------------------|
 | I     | Oct 3     | **Three doors, three worlds** (current page) |
 | II    | Oct 10    | **Adventures, melancholy and surprise**     |
 | III   | Oct 17    | **The night of the eternal ones**           |
-| IV    | Oct 31    | **The longest night** 🎃                     |
-| V     | Nov 1     | **Day of the Dead sunrise**                 |
+| IV    | Oct 25    | **The night of the absent ones** (last-minute) |
+| V     | Oct 31    | **The longest night** 🎃                     |
+| VI    | Nov 1     | **Day of the Dead sunrise**                 |
 
 This is a work in progress. I'll keep improving it week by week until the last night.
