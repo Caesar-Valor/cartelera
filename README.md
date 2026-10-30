@@ -25,7 +25,7 @@ index.html               main page: one door per night
 10-de-octubre.html       night II: adventures, melancholy and surprise
 17-de-octubre.html       night III: the night of the eternal ones
 25-de-octubre.html       night IV: the night of the absent ones (two doors)
-31-de-octubre.html       night V: the longest night
+30-de-octubre.html       night V: the longest night
 1-de-noviembre.html      night VI: Day of the Dead sunrise
 css/estilos.css          shared styles
 css/portada.css          main page styles
@@ -52,7 +52,7 @@ Six nights, each with a different dynamic:
 | II    | Oct 10    | **Adventures, melancholy and surprise**     |
 | III   | Oct 17    | **The night of the eternal ones**           |
 | IV    | Oct 25    | **The night of the absent ones** (last-minute) |
-| V     | Oct 31    | **The longest night** 🎃                     |
+| V     | Oct 30    | **The longest night** 🎃 (last-minute)       |
 | VI    | Nov 1     | **Day of the Dead sunrise**                 |
 
 This is a work in progress. I'll keep improving it week by week until the last night.

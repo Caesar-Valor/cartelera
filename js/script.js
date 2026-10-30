@@ -625,161 +625,155 @@
     }
   }
 
-  /* ---------- 31 de octubre, puerta I: el teléfono suena y suben globos negros ---------- */
-  const SVG_GLOBO =
-    '<svg viewBox="0 0 60 120"><g stroke="#8a94a6" stroke-width="1.5">' +
-    '<ellipse cx="30" cy="34" rx="26" ry="32" fill="#07080c"/><path d="M26 67 L34 67 L30 61 Z" fill="#07080c"/>' +
-    '<path d="M30 67 C24 80 36 92 30 118" fill="none" stroke-width="1.2"/></g>' +
-    '<ellipse cx="20" cy="22" rx="5" ry="9" fill="#8a94a6" opacity=".45" transform="rotate(-25 20 22)"/></svg>';
+  /* ---------- 30 de octubre, puerta I: los corazones huyen y algo los obliga a volver ---------- */
+  const SVG_CORAZON =
+    '<svg viewBox="0 0 40 36"><path fill="currentColor" d="M20 35 C8 25 1 18 1 10 C1 4 6 1 11 1 C15 1 18 3 20 7 C22 3 25 1 29 1 C34 1 39 4 39 10 C39 18 32 25 20 35 Z"/></svg>';
+  const CORAZONES = ['#e3122a', '#ff4d6d', '#8c0f2c', '#ff8fa3'];
 
-  function sonar(r) {
+  function desear(r) {
     const x0 = r.left + r.width / 2;
     const y0 = r.top + r.height / 2;
-    const lado = r.width * 0.4;
 
-    // Dos timbrazos: la luz parpadea y salen ondas desde la puerta
-    resplandor(x0, y0, 'rgba(205,218,238,.5)', [
+    // Latidos dobles, cada vez más seguidos
+    resplandor(x0, y0, 'rgba(200,16,60,.6)', [
       { opacity: 0 },
-      { opacity: 1, offset: 0.05 },
-      { opacity: 0.2, offset: 0.1 },
-      { opacity: 1, offset: 0.15 },
-      { opacity: 0, offset: 0.3 },
-      { opacity: 0, offset: 0.5 },
-      { opacity: 1, offset: 0.55 },
-      { opacity: 0.2, offset: 0.6 },
-      { opacity: 1, offset: 0.65 },
+      { opacity: 1, offset: 0.06 },
+      { opacity: 0.2, offset: 0.14 },
+      { opacity: 0.9, offset: 0.2 },
+      { opacity: 0, offset: 0.36 },
+      { opacity: 1, offset: 0.46 },
+      { opacity: 0.2, offset: 0.52 },
+      { opacity: 1, offset: 0.58 },
+      { opacity: 0.1, offset: 0.68 },
+      { opacity: 1, offset: 0.76 },
       { opacity: 0 }
-    ], { duration: 2600, delay: 300 });
+    ], { duration: 3800, delay: 300 });
 
-    for (let i = 0; i < 8; i++) {
-      const timbrazo = i < 4 ? 0 : 1300;
-
-      particula({
-        clase: 'onda',
-        x: x0,
-        y: y0,
-        ancho: lado,
-        alto: lado,
-        fotogramas: [
-          { transform: 'translate(-50%,-50%) scale(0.2)', opacity: 0 },
-          { opacity: 0.9, offset: 0.2 },
-          { transform: 'translate(-50%,-50%) scale(4.5)', opacity: 0 }
-        ],
-        opciones: { duration: 1500, delay: 300 + timbrazo + (i % 4) * 140, easing: 'ease-out' }
-      });
-    }
-
-    // Globos negros que suben hasta perderse por arriba
-    for (let i = 0; i < 16; i++) {
-      const xi = r.left + r.width * azar(-0.4, 1.4);
-      const yi = r.bottom - azar(0, r.height * 0.3);
-      const esc = azar(0.8, 1.7);
-      const vaiven = azar(-70, 70);
-
-      particula({
-        clase: 'globo',
-        html: SVG_GLOBO,
-        x: xi,
-        y: yi,
-        fotogramas: [
-          { transform: `translate(-50%,-50%) scale(${esc * 0.3})`, opacity: 0 },
-          { transform: mover(vaiven, -yi * 0.3, `scale(${esc}) rotate(${azar(-10, 10)}deg)`), opacity: 1, offset: 0.2 },
-          { transform: mover(-vaiven, -yi * 0.7, `scale(${esc}) rotate(${azar(-10, 10)}deg)`), opacity: 1, offset: 0.65 },
-          { transform: mover(vaiven * 0.5, -yi - 220, `scale(${esc})`), opacity: 0.9 }
-        ],
-        opciones: { duration: azar(4200, 6800), delay: 400 + i * 170, easing: 'ease-in' }
-      });
-    }
-  }
-
-  /* ---------- 31 de octubre, puerta II: la caja se abre y la magia sale a chorro ---------- */
-  const HERENCIA = ['#ffb347', '#ffd27a', '#c58cff', '#ff7a2e', '#fff3b0'];
-
-  function desatar(r) {
-    const x0 = r.left + r.width / 2;
-    const y0 = r.top + r.height * 0.6;
-
-    resplandor(x0, y0, 'rgba(255,150,40,.65)', [
-      { opacity: 0 },
-      { opacity: 1, offset: 0.12 },
-      { opacity: 0.5, offset: 0.4 },
-      { opacity: 0.8, offset: 0.55 },
-      { opacity: 0 }
-    ], { duration: 2600, delay: 300 });
-
-    columnaDeLuz(x0, y0, r.width * 0.55);
-
-    // Surtidor de estrellas que sube y cae
-    for (let i = 0; i < 52; i++) {
-      const t = azar(10, 28);
-      const ang = -Math.PI * azar(0.25, 0.75);
-      const dist = azar(260, 720);
+    // Salen disparados, se detienen y vuelven de golpe: no pueden alejarse
+    for (let i = 0; i < 30; i++) {
+      const t = azar(14, 42);
+      const ang = Math.random() * Math.PI * 2;
+      const dist = azar(160, 560);
       const dx = Math.cos(ang) * dist;
       const dy = Math.sin(ang) * dist;
-      const giro = azar(-540, 540);
 
       particula({
-        clase: 'destello',
-        html: SVG_DESTELLO,
+        clase: 'corazon',
+        html: SVG_CORAZON,
         x: x0,
         y: y0,
         ancho: t,
         alto: t,
-        estilos: { color: HERENCIA[i % HERENCIA.length] },
+        estilos: { color: CORAZONES[i % CORAZONES.length] },
         fotogramas: [
           { transform: 'translate(-50%,-50%) scale(0)', opacity: 0 },
-          { transform: mover(dx, dy, `scale(1.4) rotate(${giro * 0.5}deg)`), opacity: 1, offset: 0.4 },
-          { transform: mover(dx * 1.4, dy + azar(220, 480), `scale(0.3) rotate(${giro}deg)`), opacity: 0 }
+          { transform: mover(dx, dy, `scale(1.2) rotate(${azar(-30, 30)}deg)`), opacity: 1, offset: 0.4, easing: 'ease-in' },
+          { transform: mover(dx * 0.94, dy * 0.94, `scale(1.3) rotate(${azar(-30, 30)}deg)`), opacity: 1, offset: 0.68, easing: 'cubic-bezier(.7,0,1,.5)' },
+          { transform: 'translate(-50%,-50%) scale(0.2)', opacity: 0 }
         ],
-        opciones: { duration: azar(2400, 3800), delay: 350 + i * 40, easing: 'cubic-bezier(.2,.7,.4,1)' }
+        opciones: { duration: azar(3000, 3600), delay: 300 + i * 25, easing: 'cubic-bezier(.15,.7,.3,1)' }
       });
     }
   }
 
-  /* ---------- 31 de octubre, puerta III: se va la luz y la cámara sigue grabando ---------- */
-  function grabar(r) {
-    const anchoVentana = window.innerWidth;
-    const altoVentana = window.innerHeight;
-    const pantalla = { x: 0, y: 0, ancho: anchoVentana, alto: altoVentana };
+  /* ---------- 30 de octubre, puerta II: la infección se extiende desde la puerta ---------- */
+  function contagiar(r) {
+    const x0 = r.left + r.width / 2;
+    const y0 = r.top + r.height / 2;
 
-    // Apagón: la luz falla, se queda a oscuras un rato y vuelve
-    particula({
-      clase: 'apagon',
-      ...pantalla,
-      fotogramas: [
-        { opacity: 0 },
-        { opacity: 0.85, offset: 0.05 },
-        { opacity: 0.15, offset: 0.09 },
-        { opacity: 0.9, offset: 0.14 },
-        { opacity: 0.8, offset: 0.72 },
-        { opacity: 0.25, offset: 0.77 },
-        { opacity: 0.85, offset: 0.82 },
-        { opacity: 0 }
-      ],
-      opciones: { duration: 4400, delay: 300 }
-    });
+    resplandor(x0, y0, 'rgba(90,170,50,.55)', [
+      { opacity: 0 },
+      { opacity: 1, offset: 0.3 },
+      { opacity: 0.7, offset: 0.7 },
+      { opacity: 0 }
+    ], { duration: 4200, delay: 300 });
 
-    senalDeCamara(4400, 300);
-
-    // Polvo que cae despacio delante de la puerta, como si algo lo moviera
-    for (let i = 0; i < 34; i++) {
-      const t = azar(2, 5);
-      const caida = r.height * azar(0.5, 1);
+    // Manchas que brotan cada vez más lejos, como un mapa de contagio
+    for (let i = 0; i < 26; i++) {
+      const t = azar(50, 170);
+      const ang = Math.random() * Math.PI * 2;
+      const dist = 40 + i * azar(18, 30);
 
       particula({
-        clase: 'mota',
-        x: r.left + Math.random() * r.width,
-        y: r.top + azar(0, r.height * 0.3),
+        clase: 'mancha',
+        x: x0 + Math.cos(ang) * dist,
+        y: y0 + Math.sin(ang) * dist,
+        ancho: t,
+        alto: t * azar(0.75, 1.2),
+        fotogramas: [
+          { transform: 'translate(-50%,-50%) scale(0)', opacity: 0 },
+          { transform: 'translate(-50%,-50%) scale(1)', opacity: 0.85, offset: 0.3 },
+          { transform: 'translate(-50%,-50%) scale(1.2)', opacity: 0.7, offset: 0.7 },
+          { transform: 'translate(-50%,-50%) scale(1.3)', opacity: 0 }
+        ],
+        opciones: { duration: azar(2600, 3400), delay: 300 + i * 70, easing: 'ease-out' }
+      });
+    }
+
+    // Esporas que suben desde la puerta
+    for (let i = 0; i < 36; i++) {
+      const t = azar(3, 8);
+
+      particula({
+        clase: 'espora',
+        x: r.left + r.width * azar(-0.2, 1.2),
+        y: r.bottom - azar(0, r.height * 0.4),
         ancho: t,
         alto: t,
         fotogramas: [
           { transform: 'translate(-50%,-50%)', opacity: 0 },
-          { transform: mover(azar(-20, 20), caida * 0.3), opacity: 0.9, offset: 0.25 },
-          { transform: mover(azar(-40, 40), caida), opacity: 0 }
+          { transform: mover(azar(-30, 30), -azar(60, 140)), opacity: 1, offset: 0.3 },
+          { transform: mover(azar(-70, 70), -azar(260, 520)), opacity: 0 }
         ],
-        opciones: { duration: azar(2600, 3800), delay: 900 + i * 60, easing: 'linear' }
+        opciones: { duration: azar(2400, 3800), delay: 500 + i * 50, easing: 'ease-out' }
       });
     }
+  }
+
+  /* ---------- 30 de octubre, puerta III: se cae la señal y la emisión sigue al aire ---------- */
+  function emitir() {
+    const pantalla = { x: 0, y: 0, ancho: window.innerWidth, alto: window.innerHeight };
+
+    // Nieve de televisor: entra y sale de golpe, como una señal que se pierde
+    const nieve = particula({
+      clase: 'nieve',
+      ...pantalla,
+      fotogramas: [
+        { opacity: 0 },
+        { opacity: 0.9, offset: 0.04 },
+        { opacity: 0.2, offset: 0.09 },
+        { opacity: 0.95, offset: 0.13 },
+        { opacity: 0.85, offset: 0.6 },
+        { opacity: 0.3, offset: 0.65 },
+        { opacity: 0.9, offset: 0.7 },
+        { opacity: 0.8, offset: 0.9 },
+        { opacity: 0 }
+      ],
+      opciones: { duration: 4400, delay: 300 }
+    });
+    nieve.animate(
+      [{ backgroundPosition: '0 0, 0 0' }, { backgroundPosition: '0 96px, 37px 0' }],
+      { duration: 160, iterations: Infinity, easing: 'steps(6)' }
+    );
+
+    // El letrero se enciende en medio de la nieve y no se apaga
+    particula({
+      clase: 'alaire',
+      html: 'AL AIRE',
+      x: pantalla.ancho / 2,
+      y: pantalla.alto / 2,
+      fotogramas: [
+        { transform: 'translate(-50%,-50%) scale(1.3)', opacity: 0 },
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1, offset: 0.06 },
+        { opacity: 0.25, offset: 0.14 },
+        { opacity: 1, offset: 0.2 },
+        { opacity: 0.25, offset: 0.5 },
+        { opacity: 1, offset: 0.56 },
+        { opacity: 1, offset: 0.9 },
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 0 }
+      ],
+      opciones: { duration: 3600, delay: 800 }
+    });
   }
 
   /* ---------- 25 de octubre, puerta I: la bruma se espesa y algo asoma desde abajo ---------- */
@@ -935,9 +929,9 @@
     bruma: nublar,
     llama: encender,
     brujas: volar,
-    telefono: sonar,
-    herencia: desatar,
-    camara: grabar
+    deseo: desear,
+    contagio: contagiar,
+    emision: emitir
   };
 
   /* ---------- Apertura de puertas ---------- */
@@ -1019,7 +1013,7 @@
     });
   }
 
-  /* 31 de octubre: la imagen se distorsiona como en una cámara antigua */
+  /* 30 de octubre: la imagen se distorsiona como en una cámara antigua */
   function distorsionar() {
     const VIEJO = 'grayscale(1) contrast(1.45) brightness(1.15)';
     const fotogramas = [
